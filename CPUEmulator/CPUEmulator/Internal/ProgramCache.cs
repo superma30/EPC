@@ -14,7 +14,7 @@ namespace CPUEmulator.Internal
         // Phisical Methods
         private ushort _bits;
         private ushort _addressBits;
-        private DictionaryWithDefault<uint, int> _memory = new DictionaryWithDefault<uint, int>(0);
+        private DictionaryWithDefault<uint, string> _memory;
         private uint _idx = 0;
         public ProgramCache(ushort addressBits = 0, ushort memoryBits = 0)
         {
@@ -34,6 +34,7 @@ namespace CPUEmulator.Internal
             {
                 _addressBits = addressBits;
             }
+            _memory = new DictionaryWithDefault<uint, string>(new string('0', _bits));
         }
         public void SetAddress(uint address)
         {
@@ -54,10 +55,10 @@ namespace CPUEmulator.Internal
             }
             else
             {
-                _memory[_idx] = newData;
+                _memory[_idx] = Convert.ToString(newData, 2).PadLeft(_bits, '0');
             }
         }
-        public int Get()
+        public string Get()
         {
             return _memory[_idx];
         }
@@ -68,11 +69,11 @@ namespace CPUEmulator.Internal
             _memory.Clear();
         }
 
-        public void TransferDirectlyFullData(ref Dictionary<uint, int> dataPointer)
+        public void TransferDirectlyFullData(ref DictionaryWithDefault<uint, int> dataPointer)
         {
             foreach(var item in dataPointer)
             {
-                _memory[item.Key] = item.Value;
+                _memory[item.Key] = Convert.ToString(item.Value, 2).PadLeft(_bits, '0');
             }
         }
     }

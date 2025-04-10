@@ -34,11 +34,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "K:\\altro\\programmazione\\C#\\CPUEmulator\\CPUEmulator\\CPUEmulatorTester\\CPUEmulatorTester.csproj",
+      "projectUniqueName": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\CPUEmulatorTester\\CPUEmulatorTester.csproj",
       "projectName": "CPUEmulatorTester",
-      "projectPath": "K:\\altro\\programmazione\\C#\\CPUEmulator\\CPUEmulator\\CPUEmulatorTester\\CPUEmulatorTester.csproj",
+      "projectPath": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\CPUEmulatorTester\\CPUEmulatorTester.csproj",
       "packagesPath": "C:\\Users\\Utente\\.nuget\\packages\\",
-      "outputPath": "K:\\altro\\programmazione\\C#\\CPUEmulator\\CPUEmulator\\CPUEmulatorTester\\obj\\",
+      "outputPath": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\CPUEmulatorTester\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -62,8 +62,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "K:\\altro\\programmazione\\C#\\CPUEmulator\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj": {
-              "projectPath": "K:\\altro\\programmazione\\C#\\CPUEmulator\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj"
+            "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj": {
+              "projectPath": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj"
             }
           }
         }

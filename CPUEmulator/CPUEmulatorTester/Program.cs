@@ -1,6 +1,7 @@
 ﻿using CPUEmulator;
 using CPUEmulator.External;
 using CPUEmulator.Internal;
+using System.ComponentModel.Design;
 using System.Reflection.Emit;
 using System.Security.Cryptography.X509Certificates;
 
@@ -11,7 +12,6 @@ namespace CPUEmulatorTester
         static void Main(string[] args)
         {
             /*
-            string filePath = @"..\..\..\program.txt";
             if (Path.Exists(filePath))
             {
                 RAM ram = new RAM((uint)Math.Pow(2,20));
@@ -26,9 +26,25 @@ namespace CPUEmulatorTester
             }
             */
 
-            CPUEmulator.Custom.EPC epc = new CPUEmulator.Custom.EPC(8);
+            string filePath = @"..\..\..\program.txt";
 
-            
+            CPUEmulator.Custom.EPC epc = new CPUEmulator.Custom.EPC(8, 8);
+
+            if (Path.Exists(filePath))
+            {
+                epc.RAM.SetAddress(0);
+                epc.RAM.Clear();
+                epc.RAM.LoadFromFile(filePath);
+            }
+
+            epc.ProgramCache.TransferDirectlyFullData(ref epc.RAM.GetMemoryReference());
+            Console.WriteLine("Program Loaded into cache\n");
+            epc.PC.SetCurrentLine(0);
+            while (epc.CU.ExecuteInstruction(epc.CU.DecodeInstruction(epc.CU.InstructionSplit(epc.CU.InstructionFetch()))))
+            {
+                Console.WriteLine($"Instruction #{epc.PC.GetCurrentLine()}: {epc.CU.InstructionFetch().Substring(0, 4)} {epc.CU.InstructionFetch().Substring(4, 8)}  |  {epc.CU.InstructionFetch()}");
+                epc.PC.Increment();
+            }
         }
     }
 }

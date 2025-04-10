@@ -67,5 +67,10 @@ namespace CPUEmulator.External
                 }
             }
         }
+
+        public ref DictionaryWithDefault<uint, int> GetMemoryReference()
+        {
+            return ref _memory;
+        }
     }
 }

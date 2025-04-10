@@ -2,11 +2,15 @@
 using System.Reflection.Emit;
 using System;
 using CPUEmulator.External;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CPUEmulator.Custom
 {
     public class EPC : CPU
     {
+        const int _instructionInst = 4;
+        const int _instructionOperator = 8;
+
         public ALU ALU;
         public HardDriveDisk HDD;
         public RAM RAM;
@@ -89,13 +93,13 @@ namespace CPUEmulator.Custom
             TR = new Register(operatingBits);
             // AR = new Register(operatingBits);    not necessary anymore
 
-            ProgramCache = new ProgramCache(operatingBits, dataBits);
+            ProgramCache = new ProgramCache(operatingBits, _instructionInst+_instructionOperator);
             ALU = new ALU(EPCALUExecute, ref FR);
             HDD = new HardDriveDisk(1073741824, operatingBits);
             RAM = new RAM(1048576, operatingBits);
             MMU = new MMU(ref RAM, ref HDD);
             PC = new PC(operatingBits);
-            CU = new EPCCU(this, 3, operatingBits);
+            CU = new EPCCU(this, _instructionInst, _instructionOperator);
         }
 
         public static void EPCALUExecute(int OpCode)
@@ -103,7 +107,7 @@ namespace CPUEmulator.Custom
             switch (OpCode)
             {
                 case 0:
-                    Console.WriteLine("aaa");
+                    // ALU OpCodes
                     break;
             }
         }
@@ -122,15 +126,15 @@ namespace CPUEmulator.Custom
                 _operatorCodeBits = operatorCodeBits;
             }
 
-            public int InstructionFetch()
+            public string InstructionFetch()
             {
                 _EPC.ProgramCache.SetAddress(_EPC.PC.GetCurrentLine());
                 return _EPC.ProgramCache.Get();
             }
 
-            public Tuple<int, int> InstructionSplit(int fullCode)
+            public Tuple<int, int> InstructionSplit(string fullCode)
             {
-                return new Tuple<int, int>(int.Parse(fullCode.ToString().Substring(0, _instructionCodeBits)), int.Parse(fullCode.ToString().Substring(_instructionCodeBits, _operatorCodeBits)));
+                return new Tuple<int, int>(int.Parse(fullCode.Substring(0, _instructionCodeBits)), int.Parse(fullCode.Substring(_instructionCodeBits, _operatorCodeBits)));
             }
 
             public Tuple<EPCInstructions, int> DecodeInstruction(Tuple<int, int> OpCode)
@@ -179,16 +183,16 @@ namespace CPUEmulator.Custom
                         //_EPC.MMU.     // Write to Address
                         return true;
                     case EPCInstructions.EXE:
-
+                        _EPC.ALU.Execute(instruction.Item2);
                         return true;
                     case EPCInstructions.JMP:
-
+                        _EPC.PC.SetCurrentLine((uint)instruction.Item2);
                         return true;
                     case EPCInstructions.IFD:
-
+                        //Make check validity function
                         return true;
                     case EPCInstructions.LDI:
-
+                        _EPC.TR.Write(instruction.Item2);
                         return true;
                 }
                 return false;

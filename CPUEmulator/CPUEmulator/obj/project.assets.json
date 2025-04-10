@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "K:\\altro\\programmazione\\C#\\CPUEmulator\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj",
+      "projectUniqueName": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj",
       "projectName": "CPUEmulator",
-      "projectPath": "K:\\altro\\programmazione\\C#\\CPUEmulator\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj",
+      "projectPath": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj",
       "packagesPath": "C:\\Users\\Utente\\.nuget\\packages\\",
-      "outputPath": "K:\\altro\\programmazione\\C#\\CPUEmulator\\CPUEmulator\\CPUEmulator\\obj\\",
+      "outputPath": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\CPUEmulator\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

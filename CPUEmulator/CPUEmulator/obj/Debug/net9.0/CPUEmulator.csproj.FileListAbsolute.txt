@@ -9,3 +9,15 @@ K:\altro\programmazione\C#\CPUEmulator\CPUEmulator\CPUEmulator\obj\Debug\net9.0\
 K:\altro\programmazione\C#\CPUEmulator\CPUEmulator\CPUEmulator\obj\Debug\net9.0\refint\CPUEmulator.dll
 K:\altro\programmazione\C#\CPUEmulator\CPUEmulator\CPUEmulator\obj\Debug\net9.0\CPUEmulator.pdb
 K:\altro\programmazione\C#\CPUEmulator\CPUEmulator\CPUEmulator\obj\Debug\net9.0\ref\CPUEmulator.dll
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\CPUEmulator\bin\Debug\net9.0\CPUEmulator.deps.json
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\CPUEmulator\bin\Debug\net9.0\CPUEmulator.dll
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\CPUEmulator\bin\Debug\net9.0\CPUEmulator.pdb
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\CPUEmulator\obj\Debug\net9.0\CPUEmulator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\CPUEmulator\obj\Debug\net9.0\CPUEmulator.AssemblyInfoInputs.cache
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\CPUEmulator\obj\Debug\net9.0\CPUEmulator.AssemblyInfo.cs
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\CPUEmulator\obj\Debug\net9.0\CPUEmulator.csproj.CoreCompileInputs.cache
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\CPUEmulator\obj\Debug\net9.0\CPUEmulator.sourcelink.json
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\CPUEmulator\obj\Debug\net9.0\CPUEmulator.dll
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\CPUEmulator\obj\Debug\net9.0\refint\CPUEmulator.dll
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\CPUEmulator\obj\Debug\net9.0\CPUEmulator.pdb
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\CPUEmulator\obj\Debug\net9.0\ref\CPUEmulator.dll
