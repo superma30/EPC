@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "EPCCompilerTester/1.0.0": {
+        "dependencies": {
+          "EPCCompiler": "1.0.0"
+        },
+        "runtime": {
+          "EPCCompilerTester.dll": {}
+        }
+      },
+      "EPCCompiler/1.0.0": {
+        "runtime": {
+          "EPCCompiler.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EPCCompilerTester/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EPCCompiler/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

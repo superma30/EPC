@@ -1,0 +1,108 @@
+﻿#MID LANG
+
+
+var a[2] = 51, 54 #ciaoo
+var c = 4
+
+# Assegnamento diretto a un registro
+R1 = c
+b = R1
+
+# Operazione tra variabile e registro
+R3 = @ADD b R1
+
+# Definizione funzione con parametri e ritorno di 2 valori
+function [1] plusone(x, y) {
+    R1 = @SUB x y
+    R1 = @ADD R1 1
+    ret R1
+}
+
+# Chiamata alla funzione sommaProdotto passando 5 e 8
+R6 = @sommaProdotto 5 R1
+
+#DIVENTA:::::::::
+
+# RIGA 2 – Inizializzazione array a[2] = 51, 54
+LDI 0         ; Indirizzo a[0]
+SET AR
+LDI 51        ;
+WRT           ; MEM[AR] ← TR
+
+LDI 1         ; Indirizzo a[1]
+SET AR
+LDI 54        ;
+WRT           ; MEM[AR] ← TR
+
+# RIGA 3 – Inizializzazione c = 4
+LDI 2         ; Indirizzo di c
+SET AR
+LDI 4
+WRT
+
+# RIGA 6 e 7
+LDI 2
+SET AR
+LDD
+SET R1
+
+LDI 3
+SET AR
+GET R1
+WRT
+
+# RIGA 9 – R3 = @ADD b R1
+
+; Carichiamo b in ALUInput1
+LDI 3         ; Indirizzo di b
+SET AR
+LDD           ; TR ← MEM[3]
+SET ALUInput1
+
+; Carichiamo R1 (vero registro, quindi direttamente)
+GET R1
+SET ALUInput2
+
+; Eseguiamo l’operazione
+EXE 0         ; 0 = ADD
+
+; Otteniamo il risultato e lo salviamo in R3
+GET ALUOutput1
+SET R3
+
+#riga 20: chiamata sommaprodotto
+LDI 4
+SET AR
+LDI 5
+WRT
+
+LDI 5
+SET AR
+GET R1
+WRT
+PSH 60
+JMP 64
+GET FnOutput
+SET R3
+STP
+
+#FN DEC sommaProdotto #x e y sono a 4 e 5
+; Carichiamo x in ALUInput1
+LDI 4      
+SET AR
+LDD        
+SET ALUInput1
+
+; Carichiamo y in ALUInput1
+LDI 5       
+SET AR
+LDD         
+SET ALUInput1
+
+; Eseguiamo l’operazione
+EXE 1
+
+GET ALUOutput1
+SET FnOutput
+
+JMP POP
