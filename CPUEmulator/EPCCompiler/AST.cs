@@ -35,6 +35,15 @@ namespace EPCCompiler
         }
     }
 
+    public class JumpTarget : AstNode
+    {
+        public string Name;
+        public override void Print(string indent = "")
+        {
+            Console.WriteLine(indent + "jump label: " + Name);
+        }
+    }
+
     public class VarDeclaration : AstNode
     {
         public VariableName Name;
@@ -167,6 +176,20 @@ namespace EPCCompiler
         }
 
         public VariableName (string n)
+        {
+            name = n;
+        }
+    }
+    public class GenericName : PrimaryMemoryUnit
+    {
+        public string name = "";
+
+        public override void Print(string indent = "")
+        {
+            Console.WriteLine(indent + "Name: " + name);
+        }
+
+        public GenericName(string n)
         {
             name = n;
         }

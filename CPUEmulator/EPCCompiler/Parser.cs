@@ -13,7 +13,7 @@ namespace EPCCompiler
         private Token Peek(int offset = 0) => (pos + offset < tokens[0].Count) ? tokens[0][pos + offset] : null;
         private Token Advance()
         {
-            Console.WriteLine(tokens[0][pos]);
+            //Console.WriteLine(tokens[0][pos]);
             return pos < tokens[0].Count ? tokens[0][pos++] : null;
         }
 
@@ -48,7 +48,7 @@ namespace EPCCompiler
                 pos = 0;
                 return true;
             }
-            Console.WriteLine(" - " + tokens[0].Count + " - " + pos);
+            //Console.WriteLine(" - " + tokens[0].Count + " - " + pos);
             return false;
         }
 
@@ -80,6 +80,10 @@ namespace EPCCompiler
                 {
                     output = (ParseVarDeclaration());
                 }
+                else if (token.Type == "Call")
+                {
+                    output = new List<AstNode> { new JumpTarget { Name = tokens[0][1].Value } };
+                }
                 else if (tokens[0].Any(t => t.Type == "Equals"))
                 { //assign
                     output = parseAssign();
@@ -99,6 +103,9 @@ namespace EPCCompiler
             Advance(); // var
             string name = Advance().Value;
 
+            if (name.ToUpper()[0] == 'R')
+                throw new Exception();
+
             return new List<AstNode> {
                 new VarDeclaration { Name = new VariableName (name) }
             };
@@ -115,7 +122,7 @@ namespace EPCCompiler
                     if (tokens[0][2].Type == "Number")
                     {
                         return new List<AstNode> { new RegisterImmediateAssignment {
-                            RegisterDestination = new Register (int.Parse(tokens[0][0].Value.Substring(1, tokens[0][0].Value.Length - 1))),
+                            RegisterDestination = new Register (int.Parse(tokens[0][0].Value.Substring(1))),
                             Value = int.Parse(tokens[0][2].Value)
                             }
                         };
@@ -123,15 +130,15 @@ namespace EPCCompiler
                     else if (tokens[0][2].Type == "Ident" && tokens[0][2].Value.ToUpper()[0] == 'R')
                     {
                         return new List<AstNode> { new RegisterSwapAssignmente {
-                            RegisterDestination = new Register (int.Parse(tokens[0][0].Value.Substring(1, tokens[0][0].Value.Length - 1))),
-                            Origin = new Register (int.Parse(tokens[0][2].Value.Substring(1, tokens[0][2].Value.Length - 1)))
+                            RegisterDestination = new Register (int.Parse(tokens[0][0].Value.Substring(1))),
+                            Origin = new Register (int.Parse(tokens[0][2].Value.Substring(1)))
                             }
                         };
                     }
                     else if (tokens[0][2].Type == "Ident")
                     {
                         return new List<AstNode> { new RegisterMemoryAssignmente {
-                            RegisterDestination = new Register (int.Parse(tokens[0][0].Value.Substring(1, tokens[0][0].Value.Length - 1))),
+                            RegisterDestination = new Register (int.Parse(tokens[0][0].Value.Substring(1))),
                             Var = new VariableName(tokens[0][2].Value)
                             }
                         };
@@ -145,10 +152,10 @@ namespace EPCCompiler
                     if ((tokens[0][2].Type == "Ident" && tokens[0][2].Value.ToUpper()[0] != 'R') || (tokens[0][4].Type == "Ident" && tokens[0][4].Value.ToUpper()[0] != 'R'))
                         throw new Exception();
 
-                    PrimaryMemoryUnit in1 = (tokens[0][2].Type == "Ident" ? new Register(int.Parse(tokens[0][2].Value.Substring(1, tokens[0][2].Value.Length - 1))) : new Constant(int.Parse(tokens[0][2].Value)));
-                    PrimaryMemoryUnit in2 = (tokens[0][2].Type == "Ident" ? new Register(int.Parse(tokens[0][4].Value.Substring(1, tokens[0][4].Value.Length - 1))) : new Constant(int.Parse(tokens[0][4].Value)));
+                    PrimaryMemoryUnit in1 = (tokens[0][2].Type == "Ident" ? new Register(int.Parse(tokens[0][2].Value.Substring(1))) : new Constant(int.Parse(tokens[0][2].Value)));
+                    PrimaryMemoryUnit in2 = (tokens[0][2].Type == "Ident" ? new Register(int.Parse(tokens[0][4].Value.Substring(1))) : new Constant(int.Parse(tokens[0][4].Value)));
                     return new List<AstNode> { new RegisterOperationAssignment {
-                        RegisterDestination = new Register (int.Parse(tokens[0][0].Value.Substring(1, tokens[0][0].Value.Length - 1))),
+                        RegisterDestination = new Register (int.Parse(tokens[0][0].Value.Substring(1))),
                         Operation = tokens[0][3].Value,
                         Input1 = in1,
                         Input2 = in2
@@ -163,14 +170,22 @@ namespace EPCCompiler
                     if ((tokens[0][2].Type == "Ident" && tokens[0][3].Value.ToUpper()[0] != 'R'))
                         throw new Exception();
 
-                    PrimaryMemoryUnit in1 = (tokens[0][3].Type != "Ident" ? new Register(int.Parse(tokens[0][2].Value.Substring(1, tokens[0][3].Value.Length - 1))) : new Constant(int.Parse(tokens[0][3].Value)));
+                    PrimaryMemoryUnit in1 = (tokens[0][3].Type == "Ident" ? new Register(int.Parse(tokens[0][3].Value.Substring(1))) : new Constant(int.Parse(tokens[0][3].Value)));
                     return new List<AstNode> { new RegisterOperationAssignment {
-                        RegisterDestination = new Register (int.Parse(tokens[0][0].Value.Substring(1, tokens[0][0].Value.Length - 1))),
+                        RegisterDestination = new Register (int.Parse(tokens[0][0].Value.Substring(1))),
                         Operation = tokens[0][2].Value,
                         Input1 = in1
                         }
                     };
                 }
+            }
+            else if (tokens[0].Count == 3 && tokens[0][2].Value.ToUpper()[0] == 'R')
+            {
+                return new List<AstNode> { new AssignmentStatement {
+                        Destination = new VariableName (tokens[0][0].Value),
+                        RegisterInput = new Register (int.Parse(tokens[0][2].Value.Substring(1)))
+                        }
+                    };
             }
             throw new Exception();
         }
@@ -187,7 +202,11 @@ namespace EPCCompiler
                 }
                 else if (tokens[0][i].Type == "Ident" && tokens[0][i].Value.ToUpper()[0] == 'R')
                 {
-                    args.Add(new Register(int.Parse(tokens[0][i].Value.Substring(1, tokens[0][i].Value.Length-1))));
+                    args.Add(new Register(int.Parse(tokens[0][i].Value.Substring(1))));
+                }
+                else
+                {
+                    args.Add(new GenericName(tokens[0][i].Value));
                 }
             }
             return new List<AstNode> { new Statement { Name = tokens[0][0].Value, Data = args } };
@@ -239,7 +258,7 @@ namespace EPCCompiler
 
         private void LogParseFunction (string s)
         {
-            if (true)
+            if (false)
             {
                 Console.WriteLine(s);
             }

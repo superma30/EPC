@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CPUEmulatorTester")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+040a23329a06a633961f2c08fb26077a946246ff")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fabb2d0994373ca63d45e52843af71a7ab919868")]
 [assembly: System.Reflection.AssemblyProductAttribute("CPUEmulatorTester")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CPUEmulatorTester")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

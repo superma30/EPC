@@ -40,6 +40,7 @@ namespace EPCCompiler
 
         public List<List<Token>> Tokenize(string input)
         {
+            input += "\n@END";
             var lines = input.Split('\n');
             var allTokens = new List<List<Token>>();
 

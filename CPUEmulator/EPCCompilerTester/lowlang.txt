@@ -1,15 +1,24 @@
 #0 : EPCCompiler.VarDeclaration
 #1 : EPCCompiler.RegisterImmediateAssignment
-LDI 4
-SET R1
-#2 : EPCCompiler.RegisterImmediateAssignment
-LDI 5
+LDI 1
 SET R2
+#2 : EPCCompiler.Statement
+LDI 14
+JMP
 #3 : EPCCompiler.RegisterOperationAssignment
 GET R1
 SET ALUInput1
-GET R2
-SET ALUInput2
-EXE 2
+EXE 4
 GET ALUOutput1
 SET R3
+#4 : EPCCompiler.JumpTarget
+#5 : EPCCompiler.RegisterImmediateAssignment
+LDI 5
+SET R3
+#6 : EPCCompiler.Statement
+LDI 21
+JMP
+#7 : EPCCompiler.JumpTarget
+
+
+STP

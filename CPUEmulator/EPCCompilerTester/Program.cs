@@ -19,8 +19,6 @@ namespace EPCCompilerTester
             var lexer = new EPCCompiler.Lexer();
             var tokens = lexer.Tokenize(code);
 
-            Console.WriteLine(tokens.Count);
-
             var parser = new EPCCompiler.Parser();
             var ast = parser.Parse(tokens);
 
@@ -33,7 +31,9 @@ namespace EPCCompilerTester
             var compiler = new EPCCompiler.Compiler();
             compiler.Compile(ast, outputPath);
 
-            Console.WriteLine("✅ Compilazione completata. File salvato in lowlang.txt");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Compilazione completata. File salvato in lowlang.txt");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }
