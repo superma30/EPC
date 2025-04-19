@@ -2,12 +2,12 @@ var c
 #R1 = 4
 #R2 = 5
 #R3 = R1 * R2
-#c = R1
-R2 = 1
-JMP @x
-R3 = !R1
+c = R1
+R2 = c
+#JMP @x
+#R3 = !R1
 
-@x
-R3 = 5
+#@x
+#R3 = 5
 
-JMP @END
+#JMP @END
