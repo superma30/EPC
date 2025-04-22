@@ -9,7 +9,7 @@ SET R2
 #4 : EPCCompiler.RegisterOperationAssignment
 GET R1
 SET ALUInput1
-GET R2
+LDI 2
 SET ALUInput2
 EXE 3
 GET ALUOutput1
@@ -25,13 +25,13 @@ SET AR
 LDD
 SET R2
 #7 : EPCCompiler.Statement
-LDI 404
+LDI 400
 SET ALUInput1
 LDI 5
 SET ALUInput2
 LDI 42
 EXE 1
-IFD 100
+IFD 4
 JMP
 #8 : EPCCompiler.RegisterOperationAssignment
 GET R1

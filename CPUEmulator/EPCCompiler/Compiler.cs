@@ -94,6 +94,7 @@ namespace EPCCompiler
                         break;
 
                     case Statement s:
+                        //Console.WriteLine("> " + s.Name);
                         if (s.Name.ToUpper() == "JMP")
                         {
                             compileJump(s.Data, 0, sb, replaceStack);
@@ -111,7 +112,7 @@ namespace EPCCompiler
 
                             compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
 
-                            jumpIstructions("010", sb);
+                            jumpIstructions("2", sb);
                         }
                         else if (s.Name.ToUpper() == "JGE")
                         {
@@ -123,7 +124,7 @@ namespace EPCCompiler
 
                             compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
 
-                            jumpIstructions("011", sb);
+                            jumpIstructions("3", sb);
                         }
                         else if (s.Name.ToUpper() == "JZ")
                         {
@@ -135,7 +136,7 @@ namespace EPCCompiler
 
                             compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
 
-                            jumpIstructions("000", sb);
+                            jumpIstructions("0", sb);
                         }
                         else if (s.Name.ToUpper() == "JNZ")
                         {
@@ -147,7 +148,7 @@ namespace EPCCompiler
 
                             compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
 
-                            jumpIstructions("001", sb);
+                            jumpIstructions("1", sb);
                         }
                         else if (s.Name.ToUpper() == "JL")
                         {
@@ -159,7 +160,7 @@ namespace EPCCompiler
 
                             compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
 
-                            jumpIstructions("100", sb);
+                            jumpIstructions("4", sb);
                         }
                         else if (s.Name.ToUpper() == "JLE")
                         {
@@ -171,7 +172,7 @@ namespace EPCCompiler
 
                             compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
 
-                            jumpIstructions("101", sb);
+                            jumpIstructions("5", sb);
                         }
                         break;
 
@@ -198,7 +199,7 @@ namespace EPCCompiler
                 string riga = LeggiRiga(sb, r);
                 string target = riga.Split(" ")[1];
                 int targetN = labels[target];
-                Console.WriteLine(targetN);
+                //Console.WriteLine(targetN);
                 ModificaRiga(sb, r, "LDI " + targetN);
             }
 

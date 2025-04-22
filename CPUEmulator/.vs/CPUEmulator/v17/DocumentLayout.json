@@ -15,6 +15,14 @@
       "RelativeMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|solutionrelative:epccompiler\\compiler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|c:\\users\\gvnnp\\desktop\\c#\\epc2\\epc\\cpuemulator\\epccompiler\\parser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|solutionrelative:epccompiler\\parser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|c:\\users\\gvnnp\\desktop\\c#\\epc2\\epc\\cpuemulator\\epccompiler\\lexer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|solutionrelative:epccompiler\\lexer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|c:\\users\\gvnnp\\desktop\\c#\\epc2\\epc\\cpuemulator\\epccompiler\\ast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|solutionrelative:epccompiler\\ast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -26,8 +34,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Lexer.cs",
+              "DocumentMoniker": "C:\\Users\\gvnnp\\Desktop\\C#\\EPC2\\EPC\\CPUEmulator\\EPCCompiler\\Lexer.cs",
+              "RelativeDocumentMoniker": "EPCCompiler\\Lexer.cs",
+              "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\EPC2\\EPC\\CPUEmulator\\EPCCompiler\\Lexer.cs",
+              "RelativeToolTip": "EPCCompiler\\Lexer.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAwwCoAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T11:21:59.167Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Parser.cs",
+              "DocumentMoniker": "C:\\Users\\gvnnp\\Desktop\\C#\\EPC2\\EPC\\CPUEmulator\\EPCCompiler\\Parser.cs",
+              "RelativeDocumentMoniker": "EPCCompiler\\Parser.cs",
+              "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\EPC2\\EPC\\CPUEmulator\\EPCCompiler\\Parser.cs",
+              "RelativeToolTip": "EPCCompiler\\Parser.cs",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAWwIIAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T11:03:28.616Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -36,7 +70,7 @@
               "RelativeDocumentMoniker": "EPCCompilerTester\\lowlang.txt",
               "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\EPC2\\EPC\\CPUEmulator\\EPCCompilerTester\\lowlang.txt",
               "RelativeToolTip": "EPCCompilerTester\\lowlang.txt",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAiwCUAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2025-04-22T10:59:44.748Z",
               "EditorCaption": ""
@@ -49,7 +83,7 @@
               "RelativeDocumentMoniker": "EPCCompilerTester\\midlang.txt",
               "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\EPC2\\EPC\\CPUEmulator\\EPCCompilerTester\\midlang.txt",
               "RelativeToolTip": "EPCCompilerTester\\midlang.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2025-04-22T10:59:38.061Z",
               "EditorCaption": ""
@@ -62,20 +96,20 @@
               "RelativeDocumentMoniker": "EPCCompiler\\Compiler.cs",
               "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\EPC2\\EPC\\CPUEmulator\\EPCCompiler\\Compiler.cs",
               "RelativeToolTip": "EPCCompiler\\Compiler.cs",
-              "ViewState": "AgIAAJcAAAAAAAAAAAAAAK0AAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAewKAAAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-22T10:57:25.081Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "AST.cs",
               "DocumentMoniker": "C:\\Users\\gvnnp\\Desktop\\C#\\EPC2\\EPC\\CPUEmulator\\EPCCompiler\\AST.cs",
               "RelativeDocumentMoniker": "EPCCompiler\\AST.cs",
               "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\EPC2\\EPC\\CPUEmulator\\EPCCompiler\\AST.cs",
               "RelativeToolTip": "EPCCompiler\\AST.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAKEAAAAAAAAAAAAkwAwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-21T17:55:29.434Z",
               "EditorCaption": ""

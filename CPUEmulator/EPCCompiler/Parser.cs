@@ -153,7 +153,7 @@ namespace EPCCompiler
                         throw new Exception();
 
                     PrimaryMemoryUnit in1 = (tokens[0][2].Type == "Ident" ? new Register(int.Parse(tokens[0][2].Value.Substring(1))) : new Constant(int.Parse(tokens[0][2].Value)));
-                    PrimaryMemoryUnit in2 = (tokens[0][2].Type == "Ident" ? new Register(int.Parse(tokens[0][4].Value.Substring(1))) : new Constant(int.Parse(tokens[0][4].Value)));
+                    PrimaryMemoryUnit in2 = (tokens[0][4].Type == "Ident" ? new Register(int.Parse(tokens[0][4].Value.Substring(1))) : new Constant(int.Parse(tokens[0][4].Value)));
                     return new List<AstNode> { new RegisterOperationAssignment {
                         RegisterDestination = new Register (int.Parse(tokens[0][0].Value.Substring(1))),
                         Operation = tokens[0][3].Value,
@@ -209,6 +209,7 @@ namespace EPCCompiler
                     args.Add(new GenericName(tokens[0][i].Value));
                 }
             }
+            //Console.WriteLine("asdasd");
             return new List<AstNode> { new Statement { Name = tokens[0][0].Value, Data = args } };
         }
 
