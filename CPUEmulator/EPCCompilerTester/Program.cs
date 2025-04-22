@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EPCCompiler;
+using System;
 using System.IO;
 using System.Net.NetworkInformation;
 using System.Text.Json;
@@ -12,7 +13,10 @@ namespace EPCCompilerTester
         {
             string inputPath = @"..\..\..\midlang.txt";
             string outputPath = @"..\..\..\lowlang.txt";
+            string input_From_low_To_Bin = @"..\..\..\bin_code.txt";
 
+
+            MachineCodeAssembler es = new();
             var code = File.ReadAllText(inputPath);
 
 
@@ -33,6 +37,9 @@ namespace EPCCompilerTester
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Compilazione completata. File salvato in lowlang.txt");
+
+            string bb = es.From_low_To_Bin(input_From_low_To_Bin);
+            Console.Write(bb);
             Console.ForegroundColor = ConsoleColor.White;
         }
     }
