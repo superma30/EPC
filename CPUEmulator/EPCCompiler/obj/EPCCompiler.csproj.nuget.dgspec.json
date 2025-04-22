@@ -11,7 +11,7 @@
         "projectName": "EPCCompiler",
         "projectPath": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\EPCCompiler\\EPCCompiler.csproj",
         "packagesPath": "C:\\Users\\Utente\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\EPCCompiler\\obj\\",
+        "outputPath": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\EPCCompiler\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

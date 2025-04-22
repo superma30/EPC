@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPCCompiler", "EPCCompiler\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPCCompilerTester", "EPCCompilerTester\EPCCompilerTester.csproj", "{1F9D4563-463C-412E-9F7A-2D6F42D5E84B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPCVisualTemp", "EPCVisual\EPCVisualTemp.csproj", "{86597C40-6B45-4DAB-B464-74350287F635}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPCVisual", "EPCVisual\EPCVisual.csproj", "{C241C91C-7F54-48C3-8CF9-5B6617E987E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{1F9D4563-463C-412E-9F7A-2D6F42D5E84B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F9D4563-463C-412E-9F7A-2D6F42D5E84B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F9D4563-463C-412E-9F7A-2D6F42D5E84B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86597C40-6B45-4DAB-B464-74350287F635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86597C40-6B45-4DAB-B464-74350287F635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86597C40-6B45-4DAB-B464-74350287F635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86597C40-6B45-4DAB-B464-74350287F635}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C241C91C-7F54-48C3-8CF9-5B6617E987E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C241C91C-7F54-48C3-8CF9-5B6617E987E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C241C91C-7F54-48C3-8CF9-5B6617E987E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C241C91C-7F54-48C3-8CF9-5B6617E987E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,128 @@
+{
+  "version": 3,
+  "targets": {
+    "net9.0-windows7.0": {
+      "CPUEmulator/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/CPUEmulator.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CPUEmulator.dll": {}
+        }
+      },
+      "EPCCompiler/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/EPCCompiler.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EPCCompiler.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CPUEmulator/1.0.0": {
+      "type": "project",
+      "path": "../CPUEmulator/CPUEmulator.csproj",
+      "msbuildProject": "../CPUEmulator/CPUEmulator.csproj"
+    },
+    "EPCCompiler/1.0.0": {
+      "type": "project",
+      "path": "../EPCCompiler/EPCCompiler.csproj",
+      "msbuildProject": "../EPCCompiler/EPCCompiler.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net9.0-windows7.0": [
+      "CPUEmulator >= 1.0.0",
+      "EPCCompiler >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Utente\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\EPCVisual\\EPCVisual.csproj",
+      "projectName": "EPCVisual",
+      "projectPath": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\EPCVisual\\EPCVisual.csproj",
+      "packagesPath": "C:\\Users\\Utente\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\EPCVisual\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Utente\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net9.0-windows"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net9.0-windows7.0": {
+          "targetAlias": "net9.0-windows",
+          "projectReferences": {
+            "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj": {
+              "projectPath": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj"
+            },
+            "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\EPCCompiler\\EPCCompiler.csproj": {
+              "projectPath": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\EPCCompiler\\EPCCompiler.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.200"
+    },
+    "frameworks": {
+      "net9.0-windows7.0": {
+        "targetAlias": "net9.0-windows",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
