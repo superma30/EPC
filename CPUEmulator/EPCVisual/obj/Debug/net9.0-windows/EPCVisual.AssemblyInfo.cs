@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EPCVisual")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b055b8ba69f2e7ef5cb44e70bcaca0b56a45724")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6f7be4e275db0980c1c07ffb28683efe8cfb2a06")]
 [assembly: System.Reflection.AssemblyProductAttribute("EPCVisual")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EPCVisual")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
