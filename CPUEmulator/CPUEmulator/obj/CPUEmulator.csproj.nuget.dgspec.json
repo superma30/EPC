@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gvnnp\\Desktop\\C#\\EPC2\\EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj": {}
+    "C:\\Users\\School\\Desktop\\EPC\\EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gvnnp\\Desktop\\C#\\EPC2\\EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj": {
+    "C:\\Users\\School\\Desktop\\EPC\\EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gvnnp\\Desktop\\C#\\EPC2\\EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj",
+        "projectUniqueName": "C:\\Users\\School\\Desktop\\EPC\\EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj",
         "projectName": "CPUEmulator",
-        "projectPath": "C:\\Users\\gvnnp\\Desktop\\C#\\EPC2\\EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj",
-        "packagesPath": "C:\\Users\\gvnnp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gvnnp\\Desktop\\C#\\EPC2\\EPC\\CPUEmulator\\CPUEmulator\\obj\\",
+        "projectPath": "C:\\Users\\School\\Desktop\\EPC\\EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj",
+        "packagesPath": "C:\\Users\\School\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\School\\Desktop\\EPC\\EPC\\CPUEmulator\\CPUEmulator\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\gvnnp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\School\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

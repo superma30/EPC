@@ -1,0 +1,52 @@
+#0 : EPCCompiler.VarDeclaration
+#1 : EPCCompiler.VarDeclaration
+#2 : EPCCompiler.RegisterImmediateAssignment
+LDI 4
+SET R1
+#3 : EPCCompiler.RegisterImmediateAssignment
+LDI 5
+SET R2
+#4 : EPCCompiler.RegisterOperationAssignment
+GET R1
+SET ALUInput1
+LDI 2
+SET ALUInput2
+EXE 3
+GET ALUOutput1
+SET R3
+#5 : EPCCompiler.AssignmentStatement
+LDI 1
+SET AR
+GET R1
+WRT
+#6 : EPCCompiler.RegisterMemoryAssignmente
+LDI 0
+SET AR
+LDD
+SET R2
+#7 : EPCCompiler.Statement
+LDI 400
+SET ALUInput1
+LDI 5
+SET ALUInput2
+LDI 42
+EXE 1
+IFD 4
+JMP
+#8 : EPCCompiler.RegisterOperationAssignment
+GET R1
+SET ALUInput1
+EXE 12
+GET ALUOutput1
+SET R3
+#9 : EPCCompiler.JumpTarget
+#10 : EPCCompiler.RegisterImmediateAssignment
+LDI 5
+SET R3
+#11 : EPCCompiler.Statement
+LDI 49
+JMP
+#12 : EPCCompiler.JumpTarget
+
+
+STP

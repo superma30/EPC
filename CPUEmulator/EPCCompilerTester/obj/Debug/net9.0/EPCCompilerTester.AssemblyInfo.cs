@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EPCCompilerTester")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa1bcb4155c6b68da025635e826e0b1568cb8bc4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79e8308df8043cf64c7d8888c64e05b511acb030")]
 [assembly: System.Reflection.AssemblyProductAttribute("EPCCompilerTester")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EPCCompilerTester")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
