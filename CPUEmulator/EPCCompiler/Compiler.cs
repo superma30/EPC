@@ -15,8 +15,8 @@ namespace EPCCompiler
             { "+", "0" }, { "-", "1" }, { "*", "2" },
             { "/", "3" }, { "!", "4" }, { "&&", "5" },
             { "||", "6" }, { "^", "7" }, { "!&&", "8" },
-            { "!||", "9" }, { "!^", "10" }, { "RSHIFT", "11" },
-            { "LSHIFT", "12" }
+            { "!||", "9" }, { "!^", "10" }, { ">>", "11" },
+            { "<<", "12" }, { "%", "-1" }
         };
         private Dictionary<string, int> labels = new();
         private List<int> replaceStack = new();
@@ -35,7 +35,7 @@ namespace EPCCompiler
                 switch (stmt)
                 {
                     case VarDeclaration vd:
-                        variables[vd.Name.name] = memPtr;
+                        variables[vd.Name.name] = memPtr++;
                         break;
 
                     case RegisterImmediateAssignment ria:
@@ -67,7 +67,7 @@ namespace EPCCompiler
                             sb.AppendLine($"GET R{((Register)(roa.Input1)).NumberReg}");
                             sb.AppendLine($"SET ALUInput1");
                         }
-                        if (roa.Operation != "!")
+                        if (roa.Operation != "!" && roa.Operation != "<<" && roa.Operation != ">>")
                         {
                             if (roa.Input2 is Constant)
                             {
@@ -94,58 +94,85 @@ namespace EPCCompiler
                         break;
 
                     case Statement s:
+                        //Console.WriteLine("> " + s.Name);
                         if (s.Name.ToUpper() == "JMP")
                         {
-                            if (s.Data[0] is Constant)
-                            {
-                                sb.AppendLine($"LDI {((Constant)(s.Data[0])).value}");
-                            }
-                            else if (s.Data[0] is Register)
-                            {
-                                sb.AppendLine($"GET R{((Register)(s.Data[0])).NumberReg}");
-                            }
-                            else if (s.Data[0] is GenericName && (((GenericName)(s.Data[0])).name == "@"))
-                            {
-                                sb.AppendLine($"LDI {((GenericName)(s.Data[1])).name}");
-                                replaceStack.Add(ContaRighe(sb) - 1);
+                            compileJump(s.Data, 0, sb, replaceStack);
 
-                            }
                             sb.AppendLine($"JMP");
                         }
-                        if (s.Name.ToUpper() == "JG")
+                        else if (s.Name.ToUpper() == "JG")
                         {
-                            if (s.Data[0] is Constant) //valore valutato
-                            {
-                                sb.AppendLine($"LDI {((Constant)(s.Data[0])).value}");
-                            }
-                            else if (s.Data[0] is Register)
-                            {
-                                sb.AppendLine($"GET R{((Register)(s.Data[0])).NumberReg}");
-                            }
-                            else
-                            {
-                                throw new Exception();
-                            }
-                            sb.AppendLine($"SET ALUInput1");
-                            sb.AppendLine($"LDI 0");
-                            sb.AppendLine($"SET ALUInput2");
-                            if (s.Data[1] is Constant) //indirizzo del salto
-                            {
-                                sb.AppendLine($"LDI {((Constant)(s.Data[1])).value}");
-                            }
-                            else if (s.Data[1] is Register)
-                            {
-                                sb.AppendLine($"GET R{((Register)(s.Data[1])).NumberReg}");
-                            }
-                            else if (s.Data[1] is GenericName && (((GenericName)(s.Data[1])).name == "@"))
-                            {
-                                sb.AppendLine($"LDI {((GenericName)(s.Data[2])).name}");
-                                replaceStack.Add(ContaRighe(sb) - 1);
-                            }
+                            moveValueOrRegValToTR(s.Data[0], sb);
+                            
 
-                            sb.AppendLine($"EXE 1");
-                            sb.AppendLine($"IFD 010");
-                            sb.AppendLine($"JMP");
+                            sb.AppendLine($"SET ALUInput1");
+                            if (s.Data.Count >= 3) { moveValueOrRegValToTR(s.Data[1], sb); } else { sb.AppendLine($"LDI 0"); }
+                            sb.AppendLine($"SET ALUInput2");
+
+                            compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
+
+                            jumpIstructions("2", sb);
+                        }
+                        else if (s.Name.ToUpper() == "JGE")
+                        {
+                            moveValueOrRegValToTR(s.Data[0], sb);
+
+                            sb.AppendLine($"SET ALUInput1");
+                            if (s.Data.Count >= 3) { moveValueOrRegValToTR(s.Data[1], sb); } else { sb.AppendLine($"LDI 0"); }
+                            sb.AppendLine($"SET ALUInput2");
+
+                            compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
+
+                            jumpIstructions("3", sb);
+                        }
+                        else if (s.Name.ToUpper() == "JZ")
+                        {
+                            moveValueOrRegValToTR(s.Data[0], sb);
+                            
+                            sb.AppendLine($"SET ALUInput1");
+                            if (s.Data.Count >= 3) { moveValueOrRegValToTR(s.Data[1], sb); } else { sb.AppendLine($"LDI 0"); }
+                            sb.AppendLine($"SET ALUInput2");
+
+                            compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
+
+                            jumpIstructions("0", sb);
+                        }
+                        else if (s.Name.ToUpper() == "JNZ")
+                        {
+                            moveValueOrRegValToTR(s.Data[0], sb);
+
+                            sb.AppendLine($"SET ALUInput1");
+                            if (s.Data.Count >= 3) { moveValueOrRegValToTR(s.Data[1], sb); } else { sb.AppendLine($"LDI 0"); }
+                            sb.AppendLine($"SET ALUInput2");
+
+                            compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
+
+                            jumpIstructions("1", sb);
+                        }
+                        else if (s.Name.ToUpper() == "JL")
+                        {
+                            moveValueOrRegValToTR(s.Data[0], sb);
+
+                            sb.AppendLine($"SET ALUInput1");
+                            if (s.Data.Count >= 3) { moveValueOrRegValToTR(s.Data[1], sb); } else { sb.AppendLine($"LDI 0"); }
+                            sb.AppendLine($"SET ALUInput2");
+
+                            compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
+
+                            jumpIstructions("4", sb);
+                        }
+                        else if (s.Name.ToUpper() == "JLE")
+                        {
+                            moveValueOrRegValToTR(s.Data[0], sb);
+
+                            sb.AppendLine($"SET ALUInput1");
+                            if (s.Data.Count >= 3) { moveValueOrRegValToTR(s.Data[1], sb); } else { sb.AppendLine($"LDI 0"); }
+                            sb.AppendLine($"SET ALUInput2");
+
+                            compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
+
+                            jumpIstructions("5", sb);
                         }
                         break;
 
@@ -172,7 +199,7 @@ namespace EPCCompiler
                 string riga = LeggiRiga(sb, r);
                 string target = riga.Split(" ")[1];
                 int targetN = labels[target];
-                Console.WriteLine(targetN);
+                //Console.WriteLine(targetN);
                 ModificaRiga(sb, r, "LDI " + targetN);
             }
 
@@ -238,6 +265,54 @@ namespace EPCCompiler
                 count++;
 
             return count;
+        }
+
+        private void compileJump(List<PrimaryMemoryUnit> args, int preArgs, StringBuilder sb, List<int> replaceStack)
+        {
+            int len = args.Count - preArgs;
+            PrimaryMemoryUnit jumpTarget = args[args.Count - 1]; //last arg
+            if (len < 1)
+                throw new Exception("incorrect number of args in jump");
+            if (jumpTarget is Constant)
+            {
+                sb.AppendLine($"LDI {((Constant)(jumpTarget)).value}");
+            }
+            else if (jumpTarget is Register)
+            {
+                sb.AppendLine($"GET R{((Register)(jumpTarget)).NumberReg}");
+            }
+            else if (jumpTarget is GenericName)
+            {
+                sb.AppendLine($"LDI {((GenericName)(jumpTarget)).name}");
+                replaceStack.Add(ContaRighe(sb) - 1);
+            }
+            else
+            {
+                throw new Exception("cannot compile jump");
+            }
+        }
+
+        private void moveValueOrRegValToTR(PrimaryMemoryUnit v, StringBuilder sb)
+        {
+            if (v is Constant)
+            {
+                sb.AppendLine($"LDI {((Constant)(v)).value}");
+            }
+            else if (v is Register)
+            {
+                sb.AppendLine($"GET R{((Register)(v)).NumberReg}");
+            }
+            else
+            {
+                throw new Exception("attempeted to compile something that was not register or const " + v.ToString());
+            }
+        }
+
+        private void jumpIstructions(string ifdo, StringBuilder sb)
+        {
+            sb.AppendLine($"EXE 1");
+            sb.AppendLine($"IFD {ifdo}");
+            sb.AppendLine($"JMP");
         }
     }
 }
