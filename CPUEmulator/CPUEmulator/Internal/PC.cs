@@ -8,14 +8,14 @@ namespace CPUEmulator.Internal
 {
     public class PC
     {
-        uint _internalReg = 0;
+        int _internalReg = 0;
         int _bits;
         public PC(ushort bits = 0)
         {
             _bits = bits;
         }
 
-        public void SetCurrentLine(uint address)
+        public void SetCurrentLine(int address)
         {
             if (!(address > Math.Pow(2, _bits) - 1))
             {
@@ -35,7 +35,7 @@ namespace CPUEmulator.Internal
             }
         }
 
-        public uint GetCurrentLine()
+        public int GetCurrentLine()
         {
             return _internalReg;
         }

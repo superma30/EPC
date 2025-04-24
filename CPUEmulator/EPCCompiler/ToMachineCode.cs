@@ -97,6 +97,41 @@ namespace EPCCompiler
         { "5",  "00000101" }
         };
 
+        public string GetFromBin(int type, string bin)
+        {
+            switch (type)
+            {
+                case 0:
+                    foreach(var item in opcodeMap)
+                    {
+                        if (item.Value.Substring(0, 4) == bin.PadLeft(4, '0').Substring(0, 4))
+                        {
+                            return item.Key;
+                        }
+                    }
+                    break;
+                case 1:
+                    foreach (var item in registerMap)
+                    {
+                        if (item.Value == bin.PadLeft(8, '0').Substring(0, 8))
+                        {
+                            return item.Key;
+                        }
+                    }
+                    break;
+                case 2:
+                    foreach (var item in ExecuteMap)
+                    {
+                        if (item.Value == bin.PadLeft(8, '0').Substring(0, 8))
+                        {
+                            return item.Key;
+                        }
+                    }
+                    break;
+            }
+            return "";
+        }
+
         public string From_low_To_Bin(string Path_input)
         {
             string[] all_lines_of_code = File.ReadAllLines(Path_input);
@@ -122,18 +157,69 @@ namespace EPCCompiler
                     parameter = structure_line[1];
 
                 }
-                if (istruction=="GET"|| istruction == "SET")
+                if (istruction == "GET" || istruction == "SET")
                 {
                     bin_parameter = registerMap[parameter];
-                }else if (istruction == "EXE") 
+                }
+                else if (istruction == "EXE")
                 {
                     bin_parameter = ExecuteMap[parameter];
                 }
-                else if (istruction =="IFD")
+                else if (istruction == "IFD")
                 {
                     bin_parameter = IfdMap[parameter];
 
-                }else if (istruction =="LDI")
+                }
+                else if (istruction == "LDI")
+                {
+                    var arg = Convert.ToInt16(parameter);
+                    bin_parameter = Convert.ToString(arg, 2).PadLeft(8, '0').Substring(0, 8);
+                }
+
+                bin_code += $"{bin_istruction}{bin_parameter}\n";
+            }
+            return bin_code;
+        }
+
+        public string From_low_To_Bin_String(string code)
+        {
+            string[] all_lines_of_code = code.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            string bin_code = "";
+            List<string> output_bin = new();
+            foreach (string line_of_code in all_lines_of_code)
+            {
+                string line = line_of_code.Trim().ToUpper();
+                if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#"))
+                    continue;
+                string[] structure_line = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                string istruction = structure_line[0];
+                if (!opcodeMap.ContainsKey(istruction))
+                {
+                    Console.WriteLine($"Istruzione non riconosciuta: {istruction}");
+                    return bin_code + $"Istruzione non riconosciuta: {istruction}";
+                }
+                string bin_istruction = opcodeMap[istruction];
+                string parameter = "";
+                string bin_parameter = "";
+                if (structure_line.Length > 1)
+                {
+                    parameter = structure_line[1];
+
+                }
+                if (istruction == "GET" || istruction == "SET")
+                {
+                    bin_parameter = registerMap[parameter];
+                }
+                else if (istruction == "EXE")
+                {
+                    bin_parameter = ExecuteMap[parameter];
+                }
+                else if (istruction == "IFD")
+                {
+                    bin_parameter = IfdMap[parameter];
+
+                }
+                else if (istruction == "LDI")
                 {
                     var arg = Convert.ToInt16(parameter);
                     bin_parameter = Convert.ToString(arg, 2).PadLeft(8, '0').Substring(0, 8);

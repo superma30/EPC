@@ -68,6 +68,18 @@ namespace CPUEmulator.External
             }
         }
 
+        public void LoadFromString(string data)
+        {
+            uint idx = _idx;
+            string[] splittedData = data.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            for(int i = 0; i<splittedData.Length; i++)
+            {
+                string instr = splittedData[i];
+                _memory[idx] = Convert.ToInt32(instr, 2);
+                idx++;
+            }
+        }
+
         public ref DictionaryWithDefault<uint, int> GetMemoryReference()
         {
             return ref _memory;

@@ -22,3 +22,4 @@ C:\Users\Utente\source\repos\EPC\CPUEmulator\EPCVisual\obj\Debug\net9.0-windows\
 C:\Users\Utente\source\repos\EPC\CPUEmulator\EPCVisual\obj\Debug\net9.0-windows\EPCVisual.genruntimeconfig.cache
 C:\Users\Utente\source\repos\EPC\CPUEmulator\EPCVisual\obj\Debug\net9.0-windows\ref\EPCVisual.dll
 C:\Users\Utente\source\repos\EPC\CPUEmulator\EPCVisual\obj\Debug\net9.0-windows\EPCVisual.Properties.Resources.resources
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\EPCVisual\obj\Debug\net9.0-windows\EPCVisual.FormMemoryAnalizer.resources

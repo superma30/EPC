@@ -10,6 +10,16 @@ namespace CPUEmulator
     {
         public static readonly ushort DEFAULT_BITS = 8;
         public static readonly ushort DEFAULT_ADDRESS_BITS = 8;
+        
+        public static int Negate(int value, ushort bits)
+        {
+            string valBin = Convert.ToString(value, 2).PadLeft(bits, '0').Substring(Convert.ToString(value, 2).PadLeft(bits, '0').Length - bits, bits);
+
+            valBin = valBin.Replace('1', '2');
+            valBin = valBin.Replace('0', '1');
+            valBin = valBin.Replace('2', '0');
+            return Convert.ToInt32(valBin, 2);
+        }
     }
 
     public class DictionaryWithDefault<TKey, TValue> : Dictionary<TKey, TValue>

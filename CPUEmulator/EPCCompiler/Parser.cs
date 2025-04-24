@@ -129,7 +129,7 @@ namespace EPCCompiler
                     }
                     else if (tokens[0][2].Type == "Ident" && tokens[0][2].Value.ToUpper()[0] == 'R')
                     {
-                        return new List<AstNode> { new RegisterSwapAssignmente {
+                        return new List<AstNode> { new RegisterSwapAssignment {
                             RegisterDestination = new Register (int.Parse(tokens[0][0].Value.Substring(1))),
                             Origin = new Register (int.Parse(tokens[0][2].Value.Substring(1)))
                             }
@@ -137,7 +137,7 @@ namespace EPCCompiler
                     }
                     else if (tokens[0][2].Type == "Ident")
                     {
-                        return new List<AstNode> { new RegisterMemoryAssignmente {
+                        return new List<AstNode> { new RegisterMemoryAssignment {
                             RegisterDestination = new Register (int.Parse(tokens[0][0].Value.Substring(1))),
                             Var = new VariableName(tokens[0][2].Value)
                             }

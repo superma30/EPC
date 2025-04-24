@@ -88,7 +88,7 @@ namespace EPCCompiler
         }
     }
 
-    public class RegisterMemoryAssignmente : RegisterAssignment
+    public class RegisterMemoryAssignment : RegisterAssignment
     {
         public VariableName Var;
 
@@ -100,7 +100,7 @@ namespace EPCCompiler
         }
     }
 
-    public class RegisterSwapAssignmente : RegisterAssignment
+    public class RegisterSwapAssignment : RegisterAssignment
     {
         public Register Origin;
 

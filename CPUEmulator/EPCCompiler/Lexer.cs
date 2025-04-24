@@ -21,7 +21,7 @@ namespace EPCCompiler
     public class Lexer
     {
         private static readonly Regex TokenRegex = new Regex(@"
-            (?<Operation>\<\<|\>\>|\!\&\&|\!\|\||\!\^|\&\&|\|\||\^|\!|\+|\-|\*|\%|\/) |
+            (?<Operation>\<\<|\>\>|\!\&|\!\||\!\^|\&|\||\^|\!|\+|\-|\*|\%|\/) |
             (?<Comment>\#.*) |
             (?<Call>@) |
             (?<Number>\d+) |

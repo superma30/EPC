@@ -13,9 +13,9 @@ namespace EPCCompiler
         private Dictionary<string, string> opcodes = new()
         {
             { "+", "0" }, { "-", "1" }, { "*", "2" },
-            { "/", "3" }, { "!", "4" }, { "&&", "5" },
-            { "||", "6" }, { "^", "7" }, { "!&&", "8" },
-            { "!||", "9" }, { "!^", "10" }, { ">>", "11" },
+            { "/", "3" }, { "!", "4" }, { "&", "5" },
+            { "|", "6" }, { "^", "7" }, { "!&", "8" },
+            { "!|", "9" }, { "!^", "10" }, { ">>", "11" },
             { "<<", "12" }, { "%", "-1" }
         };
         private Dictionary<string, int> labels = new();
@@ -43,12 +43,12 @@ namespace EPCCompiler
                         sb.AppendLine($"SET R{ria.RegisterDestination.NumberReg}");
                         break;
 
-                    case RegisterSwapAssignmente rsa:
+                    case RegisterSwapAssignment rsa:
                         sb.AppendLine($"GET {rsa.Origin.NumberReg}");
                         sb.AppendLine($"SET R{rsa.RegisterDestination.NumberReg}");
                         break;
 
-                    case RegisterMemoryAssignmente rma:
+                    case RegisterMemoryAssignment rma:
                         int address = (variables[rma.Var.name]);
                         sb.AppendLine($"LDI {address}");
                         sb.AppendLine($"SET AR");
@@ -104,7 +104,7 @@ namespace EPCCompiler
                         else if (s.Name.ToUpper() == "JG")
                         {
                             moveValueOrRegValToTR(s.Data[0], sb);
-                            
+
 
                             sb.AppendLine($"SET ALUInput1");
                             if (s.Data.Count >= 3) { moveValueOrRegValToTR(s.Data[1], sb); } else { sb.AppendLine($"LDI 0"); }
@@ -129,7 +129,7 @@ namespace EPCCompiler
                         else if (s.Name.ToUpper() == "JZ")
                         {
                             moveValueOrRegValToTR(s.Data[0], sb);
-                            
+
                             sb.AppendLine($"SET ALUInput1");
                             if (s.Data.Count >= 3) { moveValueOrRegValToTR(s.Data[1], sb); } else { sb.AppendLine($"LDI 0"); }
                             sb.AppendLine($"SET ALUInput2");
@@ -206,7 +206,192 @@ namespace EPCCompiler
             sb.AppendLine("STP");
             File.WriteAllText(outputPath, sb.ToString());
         }
-        
+
+        public string Compile(ProgramNode program)
+        {
+            var sb = new StringBuilder();
+            int totalComments = 0;
+
+            int i = 0;
+            foreach (var stmt in program.Statements)
+            {
+                sb.AppendLine($"#{i} : {stmt.ToString()}");
+                totalComments++;
+                switch (stmt)
+                {
+                    case VarDeclaration vd:
+                        variables[vd.Name.name] = memPtr++;
+                        break;
+
+                    case RegisterImmediateAssignment ria:
+                        sb.AppendLine($"LDI {ria.Value}");
+                        sb.AppendLine($"SET R{ria.RegisterDestination.NumberReg}");
+                        break;
+
+                    case RegisterSwapAssignment rsa:
+                        sb.AppendLine($"GET R{rsa.Origin.NumberReg}");
+                        sb.AppendLine($"SET R{rsa.RegisterDestination.NumberReg}");
+                        break;
+
+                    case RegisterMemoryAssignment rma:
+                        int address = (variables[rma.Var.name]);
+                        sb.AppendLine($"LDI {address}");
+                        sb.AppendLine($"SET AR");
+                        sb.AppendLine($"LDD");
+                        sb.AppendLine($"SET R{rma.RegisterDestination.NumberReg}");
+                        break;
+
+                    case RegisterOperationAssignment roa:
+                        if (roa.Input1 is Constant)
+                        {
+                            sb.AppendLine($"LDI {((Constant)(roa.Input1)).value}");
+                            sb.AppendLine($"SET ALUInput1");
+                        }
+                        else
+                        {
+                            sb.AppendLine($"GET R{((Register)(roa.Input1)).NumberReg}");
+                            sb.AppendLine($"SET ALUInput1");
+                        }
+                        if (roa.Operation != "!" && roa.Operation != "<<" && roa.Operation != ">>")
+                        {
+                            if (roa.Input2 is Constant)
+                            {
+                                sb.AppendLine($"LDI {((Constant)(roa.Input2)).value}");
+                                sb.AppendLine($"SET ALUInput2");
+                            }
+                            else
+                            {
+                                sb.AppendLine($"GET R{((Register)(roa.Input2)).NumberReg}");
+                                sb.AppendLine($"SET ALUInput2");
+                            }
+                        }
+                        if (roa.Operation != "%")
+                        {
+                            sb.AppendLine($"EXE {opcodes[roa.Operation]}");
+                            sb.AppendLine($"GET ALUOutput1");
+                        }
+                        else
+                        {
+                            sb.AppendLine($"EXE {opcodes["/"]}");
+                            sb.AppendLine($"GET ALUOutput2");
+                        }
+                        sb.AppendLine($"SET R{roa.RegisterDestination.NumberReg}");
+                        break;
+
+                    case Statement s:
+                        //Console.WriteLine("> " + s.Name);
+                        if (s.Name.ToUpper() == "JMP")
+                        {
+                            compileJump(s.Data, 0, sb, replaceStack);
+
+                            sb.AppendLine($"JMP");
+                        }
+                        else if (s.Name.ToUpper() == "JG")
+                        {
+                            moveValueOrRegValToTR(s.Data[0], sb);
+
+
+                            sb.AppendLine($"SET ALUInput1");
+                            if (s.Data.Count >= 3) { moveValueOrRegValToTR(s.Data[1], sb); } else { sb.AppendLine($"LDI 0"); }
+                            sb.AppendLine($"SET ALUInput2");
+
+                            compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
+
+                            jumpIstructions("2", sb);
+                        }
+                        else if (s.Name.ToUpper() == "JGE")
+                        {
+                            moveValueOrRegValToTR(s.Data[0], sb);
+
+                            sb.AppendLine($"SET ALUInput1");
+                            if (s.Data.Count >= 3) { moveValueOrRegValToTR(s.Data[1], sb); } else { sb.AppendLine($"LDI 0"); }
+                            sb.AppendLine($"SET ALUInput2");
+
+                            compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
+
+                            jumpIstructions("3", sb);
+                        }
+                        else if (s.Name.ToUpper() == "JZ")
+                        {
+                            moveValueOrRegValToTR(s.Data[0], sb);
+
+                            sb.AppendLine($"SET ALUInput1");
+                            if (s.Data.Count >= 3) { moveValueOrRegValToTR(s.Data[1], sb); } else { sb.AppendLine($"LDI 0"); }
+                            sb.AppendLine($"SET ALUInput2");
+
+                            compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
+
+                            jumpIstructions("0", sb);
+                        }
+                        else if (s.Name.ToUpper() == "JNZ")
+                        {
+                            moveValueOrRegValToTR(s.Data[0], sb);
+
+                            sb.AppendLine($"SET ALUInput1");
+                            if (s.Data.Count >= 3) { moveValueOrRegValToTR(s.Data[1], sb); } else { sb.AppendLine($"LDI 0"); }
+                            sb.AppendLine($"SET ALUInput2");
+
+                            compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
+
+                            jumpIstructions("1", sb);
+                        }
+                        else if (s.Name.ToUpper() == "JL")
+                        {
+                            moveValueOrRegValToTR(s.Data[0], sb);
+
+                            sb.AppendLine($"SET ALUInput1");
+                            if (s.Data.Count >= 3) { moveValueOrRegValToTR(s.Data[1], sb); } else { sb.AppendLine($"LDI 0"); }
+                            sb.AppendLine($"SET ALUInput2");
+
+                            compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
+
+                            jumpIstructions("4", sb);
+                        }
+                        else if (s.Name.ToUpper() == "JLE")
+                        {
+                            moveValueOrRegValToTR(s.Data[0], sb);
+
+                            sb.AppendLine($"SET ALUInput1");
+                            if (s.Data.Count >= 3) { moveValueOrRegValToTR(s.Data[1], sb); } else { sb.AppendLine($"LDI 0"); }
+                            sb.AppendLine($"SET ALUInput2");
+
+                            compileJump(s.Data, (s.Data.Count >= 3 ? 2 : 1), sb, replaceStack);
+
+                            jumpIstructions("5", sb);
+                        }
+                        break;
+
+                    case AssignmentStatement ass:
+                        sb.AppendLine($"LDI {variables[ass.Destination.name]}");
+                        sb.AppendLine($"SET AR");
+                        sb.AppendLine($"GET R{ass.RegisterInput.NumberReg}");
+                        sb.AppendLine("WRT");
+                        break;
+                    case JumpTarget jt:
+                        labels[jt.Name] = ContaRighe(sb)-totalComments;
+                        break;
+
+                    default:
+                        throw new Exception("Non recognized node");
+                        break;
+
+                }
+                i++;
+            }
+
+            foreach (var r in replaceStack)
+            {
+                string riga = LeggiRiga(sb, r);
+                string target = riga.Split(" ")[1];
+                int targetN = labels[target];
+                //Console.WriteLine(targetN);
+                ModificaRiga(sb, r, "LDI " + targetN);
+            }
+
+            sb.AppendLine("STP");
+            return sb.ToString();
+        }
+
         private string OperandToRegister(AstNode node)
         {
             if (node is VariableName n)

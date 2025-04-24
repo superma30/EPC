@@ -63,6 +63,16 @@ namespace EPCVisual.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap memory_icon {
+            get {
+                object obj = ResourceManager.GetObject("memory_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap next_all_icon {
             get {
                 object obj = ResourceManager.GetObject("next_all_icon", resourceCulture);

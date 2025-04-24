@@ -14,12 +14,14 @@ namespace CPUEmulator.Internal
         public readonly Register ALUOutput2;
         public readonly Register FR;
 
+        public CPU _CPU;
         public ExecuteDelegate Execute;
 
-        public delegate void ExecuteDelegate(int OpCode);
+        public delegate void ExecuteDelegate(ALU alu, int OpCode);
 
-        public ALU(ExecuteDelegate customExecuteFunction, ref Register FlagRegister, ushort bits = 0)
+        public ALU(CPU cpu, ExecuteDelegate customExecuteFunction, ref Register FlagRegister, ushort bits = 0)
         {
+            _CPU = cpu;
             Execute = customExecuteFunction;
             FR = FlagRegister;
             ALUInputA = new Register(bits);

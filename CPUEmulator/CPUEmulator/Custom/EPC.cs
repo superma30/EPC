@@ -17,7 +17,7 @@ namespace CPUEmulator.Custom
         public MMU MMU;
         public Register FR;
         public Register TR;
-        // public Register AR;      not necessary anymore
+        public Register AR;
         public ProgramCache ProgramCache;
         public EPCCU CU;
         public PC PC;
@@ -91,10 +91,10 @@ namespace CPUEmulator.Custom
             R31 = new Register(operatingBits);
             FR = new Register(operatingBits);
             TR = new Register(operatingBits);
-            // AR = new Register(operatingBits);    not necessary anymore
+            AR = new Register(operatingBits);
 
             ProgramCache = new ProgramCache(operatingBits, _instructionInst+_instructionOperator);
-            ALU = new ALU(EPCALUExecute, ref FR);
+            ALU = new ALU(this, EPCALUExecute, ref FR);
             HDD = new HardDriveDisk(1073741824, operatingBits);
             RAM = new RAM(1048576, operatingBits);
             MMU = new MMU(ref RAM, ref HDD);
@@ -102,14 +102,266 @@ namespace CPUEmulator.Custom
             CU = new EPCCU(this, _instructionInst, _instructionOperator);
         }
 
-        public static void EPCALUExecute(int OpCode)
+        //
+        // HERE THERE ARE HARDCODED 8 BITS
+        //
+        public static void EPCALUExecute(ALU alu, int OpCode)
         {
             switch (OpCode)
             {
                 case 0:
-                    // ALU OpCodes
+                    try
+                    {
+                        alu.ALUOutput1.Write(alu.ALUInputA.Get() + alu.ALUInputB.Get());
+                        if(alu.ALUOutput1.Get() == 0)
+                        {
+                            alu.FR.Write(Convert.ToInt32("1".PadLeft(/**/8/**/, '0'), 2));
+                        }
+                        else if(alu.ALUOutput1.Get() < 0)
+                        {
+                            alu.FR.Write(Convert.ToInt32("10".PadLeft(/**/8/**/, '0'), 2));
+                        }
+                    }
+                    catch
+                    {
+                        alu.ALUOutput1.Write(Convert.ToInt32(Convert.ToString(alu.ALUInputA.Get() + alu.ALUInputB.Get(), 2).Substring(Convert.ToString(alu.ALUInputA.Get() + alu.ALUInputB.Get(), 2).Length - /**/8/**/, /**/8/**/), 2));
+                        if (alu.ALUOutput1.Get() == 0)
+                        {
+                            alu.FR.Write(Convert.ToInt32("101".PadLeft(/**/8/**/, '0'), 2));
+                        }
+                        else if (alu.ALUOutput1.Get() < 0)
+                        {
+                            alu.FR.Write(Convert.ToInt32("110".PadLeft(/**/8/**/, '0'), 2));
+                        }
+                    }
+                    break;
+                case 1:
+                    try
+                    {
+                        alu.ALUOutput1.Write(alu.ALUInputA.Get() - alu.ALUInputB.Get());
+                        if (alu.ALUOutput1.Get() == 0)
+                        {
+                            alu.FR.Write(Convert.ToInt32("1".PadLeft(/**/8/**/, '0'), 2));
+                        }
+                        else if (alu.ALUOutput1.Get() < 0)
+                        {
+                            alu.FR.Write(Convert.ToInt32("10".PadLeft(/**/8/**/, '0'), 2));
+                        }
+                    }
+                    catch
+                    {
+                        alu.ALUOutput1.Write(Convert.ToInt32(Convert.ToString(alu.ALUInputA.Get() - alu.ALUInputB.Get(), 2).Substring(Convert.ToString(alu.ALUInputA.Get() - alu.ALUInputB.Get(), 2).Length - /**/8/**/, /**/8/**/), 2));
+                        if (alu.ALUOutput1.Get() == 0)
+                        {
+                            alu.FR.Write(Convert.ToInt32("101".PadLeft(/**/8/**/, '0'), 2));
+                        }
+                        else if (alu.ALUOutput1.Get() < 0)
+                        {
+                            alu.FR.Write(Convert.ToInt32("110".PadLeft(/**/8/**/, '0'), 2));
+                        }
+                    }
+                    break;
+                case 2:
+                    try
+                    {
+                        alu.ALUOutput1.Write(alu.ALUInputA.Get() * alu.ALUInputB.Get());
+                        if (alu.ALUOutput1.Get() == 0)
+                        {
+                            alu.FR.Write(Convert.ToInt32("1".PadLeft(/**/8/**/, '0'), 2));
+                        }
+                        else if (alu.ALUOutput1.Get() < 0)
+                        {
+                            alu.FR.Write(Convert.ToInt32("10".PadLeft(/**/8/**/, '0'), 2));
+                        }
+                    }
+                    catch
+                    {
+                        alu.ALUOutput1.Write(Convert.ToInt32(Convert.ToString(alu.ALUInputA.Get() * alu.ALUInputB.Get(), 2).Substring(Convert.ToString(alu.ALUInputA.Get() * alu.ALUInputB.Get(), 2).Length - /**/8/**/, /**/8/**/), 2));
+                        if (alu.ALUOutput1.Get() == 0)
+                        {
+                            alu.FR.Write(Convert.ToInt32("101".PadLeft(/**/8/**/, '0'), 2));
+                        }
+                        else if (alu.ALUOutput1.Get() < 0)
+                        {
+                            alu.FR.Write(Convert.ToInt32("110".PadLeft(/**/8/**/, '0'), 2));
+                        }
+                    }
+                    break;
+                case 3:
+                    try
+                    {
+                        alu.ALUOutput1.Write(alu.ALUInputA.Get() / alu.ALUInputB.Get());
+                        alu.ALUOutput2.Write(alu.ALUInputA.Get() % alu.ALUInputB.Get());
+                        if (alu.ALUOutput1.Get() == 0)
+                        {
+                            alu.FR.Write(Convert.ToInt32("1".PadLeft(/**/8/**/, '0'), 2));
+                        }
+                        else if (alu.ALUOutput1.Get() < 0)
+                        {
+                            alu.FR.Write(Convert.ToInt32("10".PadLeft(/**/8/**/, '0'), 2));
+                        }
+                    }
+                    catch
+                    {
+                        alu.ALUOutput1.Write(Convert.ToInt32(Convert.ToString(alu.ALUInputA.Get() / alu.ALUInputB.Get(), 2).Substring(Convert.ToString(alu.ALUInputA.Get() / alu.ALUInputB.Get(), 2).Length - /**/8/**/, /**/8/**/), 2));
+                        alu.ALUOutput2.Write(Convert.ToInt32(Convert.ToString(alu.ALUInputA.Get() % alu.ALUInputB.Get(), 2).Substring(Convert.ToString(alu.ALUInputA.Get() % alu.ALUInputB.Get(), 2).Length - /**/8/**/, /**/8/**/), 2));
+                        if (alu.ALUOutput1.Get() == 0)
+                        {
+                            alu.FR.Write(Convert.ToInt32("101".PadLeft(/**/8/**/, '0'), 2));
+                        }
+                        else if (alu.ALUOutput1.Get() < 0)
+                        {
+                            alu.FR.Write(Convert.ToInt32("110".PadLeft(/**/8/**/, '0'), 2));
+                        }
+                    }
+                    break;
+                case 4:
+                    alu.ALUOutput1.Write(GlobalData.Negate(alu.ALUInputA.Get(), 8));
+                    if (alu.ALUOutput1.Get() == 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("1".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    else if (alu.ALUOutput1.Get() < 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("10".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    break;
+                case 5:
+                    alu.ALUOutput1.Write(alu.ALUInputA.Get() & alu.ALUInputB.Get());
+                    if (alu.ALUOutput1.Get() == 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("1".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    else if (alu.ALUOutput1.Get() < 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("10".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    break;
+                case 6:
+                    alu.ALUOutput1.Write(alu.ALUInputA.Get() | alu.ALUInputB.Get());
+                    if (alu.ALUOutput1.Get() == 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("1".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    else if (alu.ALUOutput1.Get() < 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("10".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    break;
+                case 7:
+                    alu.ALUOutput1.Write(alu.ALUInputA.Get() ^ alu.ALUInputB.Get());
+                    if (alu.ALUOutput1.Get() == 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("1".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    else if (alu.ALUOutput1.Get() < 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("10".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    break;
+                case 8:
+                    alu.ALUOutput1.Write(GlobalData.Negate(alu.ALUInputA.Get() & alu.ALUInputB.Get(), 8));
+                    if (alu.ALUOutput1.Get() == 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("1".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    else if (alu.ALUOutput1.Get() < 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("10".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    break;
+                case 9:
+                    alu.ALUOutput1.Write(GlobalData.Negate(alu.ALUInputA.Get() | alu.ALUInputB.Get(), 8));
+                    if (alu.ALUOutput1.Get() == 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("1".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    else if (alu.ALUOutput1.Get() < 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("10".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    break;
+                case 10:
+                    alu.ALUOutput1.Write(GlobalData.Negate(alu.ALUInputA.Get() ^ alu.ALUInputB.Get(), 8));
+                    if (alu.ALUOutput1.Get() == 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("1".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    else if (alu.ALUOutput1.Get() < 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("10".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    break;
+                case 11:
+                    alu.ALUOutput1.Write(alu.ALUInputA.Get() >>> 1);
+                    if (alu.ALUOutput1.Get() == 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("1".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    else if (alu.ALUOutput1.Get() < 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("10".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    break;
+                case 12:
+                    alu.ALUOutput1.Write(alu.ALUInputA.Get() << 1);
+                    if (alu.ALUOutput1.Get() == 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("1".PadLeft(/**/8/**/, '0'), 2));
+                    }
+                    else if (alu.ALUOutput1.Get() < 0)
+                    {
+                        alu.FR.Write(Convert.ToInt32("10".PadLeft(/**/8/**/, '0'), 2));
+                    }
                     break;
             }
+        }
+
+        public Dictionary<string, int> GetRegisters()
+        {
+            return new Dictionary<string, int>()
+                {
+                    {"PC", (int)PC.GetCurrentLine()},
+                    {"TR", TR.Get()},
+                    {"FR", FR.Get()},
+                    {"AR", AR.Get()},
+                    {"R00", R00.Get()},
+                    {"R01", R01.Get()},
+                    {"R02", R02.Get()},
+                    {"R03", R03.Get()},
+                    {"R04", R04.Get()},
+                    {"R05", R05.Get()},
+                    {"R06", R06.Get()},
+                    {"R07", R07.Get()},
+                    {"R08", R08.Get()},
+                    {"R09", R09.Get()},
+                    {"R10", R10.Get()},
+                    {"R11", R11.Get()},
+                    {"R12", R12.Get()},
+                    {"R13", R13.Get()},
+                    {"R14", R14.Get()},
+                    {"R15", R15.Get()},
+                    {"R16", R16.Get()},
+                    {"R17", R17.Get()},
+                    {"R18", R18.Get()},
+                    {"R19", R19.Get()},
+                    {"R20", R20.Get()},
+                    {"R21", R21.Get()},
+                    {"R22", R22.Get()},
+                    {"R23", R23.Get()},
+                    {"R24", R24.Get()},
+                    {"R25", R25.Get()},
+                    {"R26", R26.Get()},
+                    {"R27", R27.Get()},
+                    {"R28", R28.Get()},
+                    {"R29", R29.Get()},
+                    {"R30", R30.Get()},
+                    {"R31", R31.Get()},
+                    {"ALUIA", ALU.ALUInputA.Get()},
+                    {"ALUIB", ALU.ALUInputB.Get()},
+                    {"ALUO1", ALU.ALUOutput1.Get()},
+                    {"ALUO2", ALU.ALUOutput2.Get()}
+                };
         }
 
         public class EPCCU : CU
@@ -128,13 +380,13 @@ namespace CPUEmulator.Custom
 
             public string InstructionFetch()
             {
-                _EPC.ProgramCache.SetAddress(_EPC.PC.GetCurrentLine());
+                _EPC.ProgramCache.SetAddress((uint)_EPC.PC.GetCurrentLine());
                 return _EPC.ProgramCache.Get();
             }
 
             public Tuple<int, int> InstructionSplit(string fullCode)
             {
-                return new Tuple<int, int>(int.Parse(fullCode.Substring(0, _instructionCodeBits)), int.Parse(fullCode.Substring(_instructionCodeBits, _operatorCodeBits)));
+                return new Tuple<int, int>(Convert.ToInt32(fullCode.Substring(0, _instructionCodeBits), 2), Convert.ToInt32(fullCode.Substring(_instructionCodeBits, _operatorCodeBits), 2));
             }
 
             public Tuple<EPCInstructions, int> DecodeInstruction(Tuple<int, int> OpCode)
@@ -152,45 +404,85 @@ namespace CPUEmulator.Custom
                     case EPCInstructions.NUL:
                         // Do nothing
                         return true;
+
                     case EPCInstructions.STP:
                         return false;
+
                     case EPCInstructions.GET:
                         reg = CodeToRegister(instruction.Item2);
                         if(instruction.Item2 == 0)  // Means it selected PC
                         {
-
+                            _EPC.TR.Write((int)_EPC.PC.GetCurrentLine());
                         }
                         else if(reg != null)  // Means it selected any Register
                         {
-
+                            _EPC.TR.Write(reg.Get());
                         }
                         return true;
+
                     case EPCInstructions.SET:
                         reg = CodeToRegister(instruction.Item2);
                         if (instruction.Item2 == 0)  // Means it selected PC
                         {
-
+                            _EPC.PC.SetCurrentLine(_EPC.TR.Get());
                         }
                         else if (reg != null)  // Means it selected any Register
                         {
-
+                            reg.Write(_EPC.TR.Get());
                         }
                         return true;
+
                     case EPCInstructions.LDD:
-                        //_EPC.MMU.     // Get from Address
+                        _EPC.RAM.SetAddress((uint)instruction.Item2);
+                        _EPC.TR.Write(_EPC.RAM.Get());
                         return true;
+
                     case EPCInstructions.WRT:
-                        //_EPC.MMU.     // Write to Address
+                        _EPC.RAM.SetAddress((uint)instruction.Item2);
+                        _EPC.RAM.Write(_EPC.TR.Get());
                         return true;
+
                     case EPCInstructions.EXE:
-                        _EPC.ALU.Execute(instruction.Item2);
+                        _EPC.ALU.Execute(_EPC.ALU, instruction.Item2);
                         return true;
+
                     case EPCInstructions.JMP:
-                        _EPC.PC.SetCurrentLine((uint)instruction.Item2);
+                        _EPC.PC.SetCurrentLine(_EPC.TR.Get()-1);
                         return true;
+
                     case EPCInstructions.IFD:
-                        //Make check validity function
+                        bool check;
+                        var FRBinary = Convert.ToString(_EPC.FR.Get(), 2).PadLeft(8, '0');
+                        switch (instruction.Item2)
+                        {
+                            case 0:
+                                check = FRBinary[FRBinary.Length - 1 - (int)FRBits.ZeroFlag] == '1';
+                                break;
+                            case 1:
+                                check = FRBinary[FRBinary.Length - 1 - (int)FRBits.ZeroFlag] == '0';
+                                break;
+                            case 2:
+                                check = FRBinary[FRBinary.Length - 1 - (int)FRBits.NegativeFlag] == '0' && FRBinary[FRBinary.Length-1 - (int)FRBits.ZeroFlag] == '0';
+                                break;
+                            case 3:
+                                check = FRBinary[FRBinary.Length - 1 - (int)FRBits.NegativeFlag] == '0' || FRBinary[FRBinary.Length - 1 - (int)FRBits.ZeroFlag] == '1';
+                                break;
+                            case 4:
+                                check = FRBinary[FRBinary.Length - 1 - (int)FRBits.NegativeFlag] == '1' && FRBinary[FRBinary.Length - 1 - (int)FRBits.ZeroFlag] == '0';
+                                break;
+                            case 5:
+                                check = FRBinary[FRBinary.Length - 1 - (int)FRBits.NegativeFlag] == '1' || FRBinary[FRBinary.Length - 1 - (int)FRBits.ZeroFlag] == '1';
+                                break;
+                            default:
+                                check = false;
+                                break;
+                        }
+                        if (!check)
+                        {
+                            _EPC.PC.Increment();
+                        }
                         return true;
+
                     case EPCInstructions.LDI:
                         _EPC.TR.Write(instruction.Item2);
                         return true;
@@ -219,7 +511,7 @@ namespace CPUEmulator.Custom
                     case 8:
                         return EPCInstructions.IFD;
                     case 9:
-                        return EPCInstructions.LDD;
+                        return EPCInstructions.LDI;
                     case 0:
                     default:
                         return EPCInstructions.NUL;
@@ -241,6 +533,8 @@ namespace CPUEmulator.Custom
                         return _EPC.ALU.ALUOutput1;
                     case 5:
                         return _EPC.ALU.ALUOutput2;
+                    case 6:
+                        return _EPC.AR;
                     case 10:
                         return _EPC.R00;
                     case 11:
@@ -311,7 +605,6 @@ namespace CPUEmulator.Custom
             }
 
 
-
             // Eventual Pipeline Emulator
 
             /*
@@ -348,6 +641,14 @@ namespace CPUEmulator.Custom
 
             }
             */
+        }
+
+        public enum FRBits
+        {
+            ZeroFlag = 0,
+            NegativeFlag = 1,
+            OverflowFlag = 2,
+            CarryFlag = 3
         }
 
         public enum EPCInstructions

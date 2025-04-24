@@ -46,3 +46,15 @@ C:\Users\gvnnp\Desktop\C#\EPC2\EPC\CPUEmulator\EPCCompiler\obj\Debug\net9.0\EPCC
 C:\Users\gvnnp\Desktop\C#\EPC2\EPC\CPUEmulator\EPCCompiler\obj\Debug\net9.0\refint\EPCCompiler.dll
 C:\Users\gvnnp\Desktop\C#\EPC2\EPC\CPUEmulator\EPCCompiler\obj\Debug\net9.0\EPCCompiler.pdb
 C:\Users\gvnnp\Desktop\C#\EPC2\EPC\CPUEmulator\EPCCompiler\obj\Debug\net9.0\ref\EPCCompiler.dll
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\EPCCompiler\bin\Debug\net9.0\EPCCompiler.deps.json
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\EPCCompiler\bin\Debug\net9.0\EPCCompiler.dll
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\EPCCompiler\bin\Debug\net9.0\EPCCompiler.pdb
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\EPCCompiler\obj\Debug\net9.0\EPCCompiler.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\EPCCompiler\obj\Debug\net9.0\EPCCompiler.AssemblyInfoInputs.cache
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\EPCCompiler\obj\Debug\net9.0\EPCCompiler.AssemblyInfo.cs
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\EPCCompiler\obj\Debug\net9.0\EPCCompiler.csproj.CoreCompileInputs.cache
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\EPCCompiler\obj\Debug\net9.0\EPCCompiler.sourcelink.json
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\EPCCompiler\obj\Debug\net9.0\EPCCompiler.dll
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\EPCCompiler\obj\Debug\net9.0\refint\EPCCompiler.dll
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\EPCCompiler\obj\Debug\net9.0\EPCCompiler.pdb
+C:\Users\Utente\Source\Repos\EPC\CPUEmulator\EPCCompiler\obj\Debug\net9.0\ref\EPCCompiler.dll

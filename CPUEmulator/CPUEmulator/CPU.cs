@@ -6,6 +6,6 @@ namespace CPUEmulator
 {
     public class CPU
     {
-        
+        public Register FR;
     }
 }

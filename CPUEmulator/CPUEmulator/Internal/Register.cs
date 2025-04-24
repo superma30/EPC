@@ -23,7 +23,7 @@ namespace CPUEmulator.Internal
         }
         public void Write(int newData)
         {
-            if(newData < -Math.Pow(2, _bits-1) || newData > Math.Pow(2, _bits-1) - 1)
+            if(Convert.ToString(newData, 2).Length > _bits)
             {
                 throw new ArgumentOutOfRangeException($"Data:{newData}/{Convert.ToString(newData, 2)},Bits:{_bits}");
             }

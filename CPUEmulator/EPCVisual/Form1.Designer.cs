@@ -33,6 +33,13 @@
             splitContainer1 = new SplitContainer();
             lbl_line = new Label();
             label1 = new Label();
+            splitContainer2 = new SplitContainer();
+            splitContainer3 = new SplitContainer();
+            label3 = new Label();
+            rtb_code = new RichTextBox();
+            label5 = new Label();
+            rtb_assembledCode = new RichTextBox();
+            label4 = new Label();
             rtb_executionLog = new RichTextBox();
             toolStrip1 = new ToolStrip();
             btn_changeSource = new ToolStripButton();
@@ -43,8 +50,10 @@
             btn_restart = new ToolStripButton();
             btn_next = new ToolStripButton();
             btn_nextAll = new ToolStripButton();
+            btn_memoryAnalizer = new ToolStripButton();
             pgb_progess = new ToolStripProgressBar();
             tab_compiler = new TabPage();
+            label2 = new Label();
             openFileDialog1 = new OpenFileDialog();
             tabControl1.SuspendLayout();
             tab_emulator.SuspendLayout();
@@ -52,7 +61,16 @@
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
+            splitContainer2.Panel1.SuspendLayout();
+            splitContainer2.Panel2.SuspendLayout();
+            splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).BeginInit();
+            splitContainer3.Panel1.SuspendLayout();
+            splitContainer3.Panel2.SuspendLayout();
+            splitContainer3.SuspendLayout();
             toolStrip1.SuspendLayout();
+            tab_compiler.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -64,7 +82,7 @@
             tabControl1.Margin = new Padding(4, 3, 4, 3);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(933, 519);
+            tabControl1.Size = new Size(984, 561);
             tabControl1.TabIndex = 0;
             // 
             // tab_emulator
@@ -75,7 +93,7 @@
             tab_emulator.Margin = new Padding(4, 3, 4, 3);
             tab_emulator.Name = "tab_emulator";
             tab_emulator.Padding = new Padding(4, 3, 4, 3);
-            tab_emulator.Size = new Size(925, 491);
+            tab_emulator.Size = new Size(976, 533);
             tab_emulator.TabIndex = 0;
             tab_emulator.Text = "Emulator";
             tab_emulator.UseVisualStyleBackColor = true;
@@ -95,16 +113,15 @@
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(rtb_executionLog);
-            splitContainer1.Size = new Size(917, 459);
-            splitContainer1.SplitterDistance = 46;
-            splitContainer1.SplitterWidth = 5;
+            splitContainer1.Panel2.Controls.Add(splitContainer2);
+            splitContainer1.Size = new Size(968, 501);
+            splitContainer1.SplitterDistance = 43;
             splitContainer1.TabIndex = 1;
             // 
             // lbl_line
             // 
             lbl_line.AutoSize = true;
-            lbl_line.Location = new Point(91, 14);
+            lbl_line.Location = new Point(95, 11);
             lbl_line.Margin = new Padding(4, 0, 4, 0);
             lbl_line.Name = "lbl_line";
             lbl_line.Size = new Size(0, 15);
@@ -114,12 +131,115 @@
             // 
             label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
-            label1.Location = new Point(12, 14);
+            label1.Location = new Point(12, 12);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(78, 15);
+            label1.Size = new Size(75, 15);
             label1.TabIndex = 0;
-            label1.Text = "Current Line: ";
+            label1.Text = "Current Line:";
+            // 
+            // splitContainer2
+            // 
+            splitContainer2.Dock = DockStyle.Fill;
+            splitContainer2.Location = new Point(0, 0);
+            splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            splitContainer2.Panel1.Controls.Add(splitContainer3);
+            // 
+            // splitContainer2.Panel2
+            // 
+            splitContainer2.Panel2.Controls.Add(label4);
+            splitContainer2.Panel2.Controls.Add(rtb_executionLog);
+            splitContainer2.Size = new Size(968, 454);
+            splitContainer2.SplitterDistance = 500;
+            splitContainer2.TabIndex = 2;
+            // 
+            // splitContainer3
+            // 
+            splitContainer3.Dock = DockStyle.Fill;
+            splitContainer3.Location = new Point(0, 0);
+            splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            splitContainer3.Panel1.Controls.Add(label3);
+            splitContainer3.Panel1.Controls.Add(rtb_code);
+            // 
+            // splitContainer3.Panel2
+            // 
+            splitContainer3.Panel2.Controls.Add(label5);
+            splitContainer3.Panel2.Controls.Add(rtb_assembledCode);
+            splitContainer3.Size = new Size(500, 454);
+            splitContainer3.SplitterDistance = 157;
+            splitContainer3.TabIndex = 4;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label3.AutoSize = true;
+            label3.Location = new Point(122, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(35, 15);
+            label3.TabIndex = 3;
+            label3.Text = "Code";
+            // 
+            // rtb_code
+            // 
+            rtb_code.BackColor = Color.Black;
+            rtb_code.BorderStyle = BorderStyle.None;
+            rtb_code.Cursor = Cursors.IBeam;
+            rtb_code.Dock = DockStyle.Fill;
+            rtb_code.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rtb_code.ForeColor = Color.White;
+            rtb_code.Location = new Point(0, 0);
+            rtb_code.Margin = new Padding(4, 3, 4, 3);
+            rtb_code.Name = "rtb_code";
+            rtb_code.ReadOnly = true;
+            rtb_code.ShowSelectionMargin = true;
+            rtb_code.Size = new Size(157, 454);
+            rtb_code.TabIndex = 2;
+            rtb_code.Text = "";
+            rtb_code.WordWrap = false;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label5.AutoSize = true;
+            label5.Location = new Point(243, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(96, 15);
+            label5.TabIndex = 4;
+            label5.Text = "Assembled Code";
+            // 
+            // rtb_assembledCode
+            // 
+            rtb_assembledCode.BackColor = Color.Black;
+            rtb_assembledCode.BorderStyle = BorderStyle.None;
+            rtb_assembledCode.Cursor = Cursors.IBeam;
+            rtb_assembledCode.Dock = DockStyle.Fill;
+            rtb_assembledCode.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rtb_assembledCode.ForeColor = Color.White;
+            rtb_assembledCode.Location = new Point(0, 0);
+            rtb_assembledCode.Margin = new Padding(4, 3, 4, 3);
+            rtb_assembledCode.Name = "rtb_assembledCode";
+            rtb_assembledCode.ReadOnly = true;
+            rtb_assembledCode.ShowSelectionMargin = true;
+            rtb_assembledCode.Size = new Size(339, 454);
+            rtb_assembledCode.TabIndex = 3;
+            rtb_assembledCode.Text = "";
+            rtb_assembledCode.WordWrap = false;
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label4.AutoSize = true;
+            label4.Location = new Point(382, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(82, 15);
+            label4.TabIndex = 2;
+            label4.Text = "Execution Log";
             // 
             // rtb_executionLog
             // 
@@ -134,19 +254,19 @@
             rtb_executionLog.Name = "rtb_executionLog";
             rtb_executionLog.ReadOnly = true;
             rtb_executionLog.ShowSelectionMargin = true;
-            rtb_executionLog.Size = new Size(917, 408);
-            rtb_executionLog.TabIndex = 0;
-            rtb_executionLog.Text = "aaaa";
+            rtb_executionLog.Size = new Size(464, 454);
+            rtb_executionLog.TabIndex = 1;
+            rtb_executionLog.Text = "";
             rtb_executionLog.WordWrap = false;
             // 
             // toolStrip1
             // 
             toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btn_changeSource, lbl_source, toolStripSeparator1, btn_start, btn_stop, btn_restart, btn_next, btn_nextAll, pgb_progess });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btn_changeSource, lbl_source, toolStripSeparator1, btn_start, btn_stop, btn_restart, btn_next, btn_nextAll, btn_memoryAnalizer, pgb_progess });
             toolStrip1.Location = new Point(4, 3);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.RenderMode = ToolStripRenderMode.System;
-            toolStrip1.Size = new Size(917, 26);
+            toolStrip1.Size = new Size(968, 26);
             toolStrip1.TabIndex = 0;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -167,6 +287,7 @@
             lbl_source.Size = new Size(109, 23);
             lbl_source.Text = "No Source Selected";
             lbl_source.ToolTipText = "Current Source";
+            lbl_source.Click += btn_changeSource_Click;
             // 
             // toolStripSeparator1
             // 
@@ -194,6 +315,7 @@
             btn_stop.Size = new Size(23, 23);
             btn_stop.Text = "toolStripButton1";
             btn_stop.ToolTipText = "Stop";
+            btn_stop.Click += btn_stop_Click;
             // 
             // btn_restart
             // 
@@ -216,6 +338,7 @@
             btn_next.Size = new Size(23, 23);
             btn_next.Text = "toolStripButton1";
             btn_next.ToolTipText = "Next";
+            btn_next.Click += btn_next_Click;
             // 
             // btn_nextAll
             // 
@@ -228,6 +351,19 @@
             btn_nextAll.Size = new Size(23, 22);
             btn_nextAll.Text = "toolStripButton1";
             btn_nextAll.ToolTipText = "Next all";
+            btn_nextAll.Click += btn_nextAll_Click;
+            // 
+            // btn_memoryAnalizer
+            // 
+            btn_memoryAnalizer.BackgroundImageLayout = ImageLayout.Zoom;
+            btn_memoryAnalizer.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btn_memoryAnalizer.Image = Properties.Resources.memory_icon;
+            btn_memoryAnalizer.ImageTransparentColor = Color.Magenta;
+            btn_memoryAnalizer.Name = "btn_memoryAnalizer";
+            btn_memoryAnalizer.Size = new Size(23, 23);
+            btn_memoryAnalizer.Text = "toolStripButton1";
+            btn_memoryAnalizer.ToolTipText = "Open Memory Analizer";
+            btn_memoryAnalizer.Click += btn_memoryAnalizer_Click;
             // 
             // pgb_progess
             // 
@@ -239,14 +375,24 @@
             // 
             // tab_compiler
             // 
+            tab_compiler.Controls.Add(label2);
             tab_compiler.Location = new Point(4, 24);
             tab_compiler.Margin = new Padding(4, 3, 4, 3);
             tab_compiler.Name = "tab_compiler";
             tab_compiler.Padding = new Padding(4, 3, 4, 3);
-            tab_compiler.Size = new Size(925, 491);
+            tab_compiler.Size = new Size(976, 533);
             tab_compiler.TabIndex = 1;
             tab_compiler.Text = "Compiler";
             tab_compiler.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(3, 3);
+            label2.Name = "label2";
+            label2.Size = new Size(343, 45);
+            label2.TabIndex = 0;
+            label2.Text = "Currently not supported!\r\n\r\nThe file gets automatically compiled and linked from the source";
             // 
             // openFileDialog1
             // 
@@ -256,12 +402,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(933, 519);
+            ClientSize = new Size(984, 561);
             Controls.Add(tabControl1);
             Margin = new Padding(4, 3, 4, 3);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "EPC Emulator and Compiler";
             tabControl1.ResumeLayout(false);
             tab_emulator.ResumeLayout(false);
             tab_emulator.PerformLayout();
@@ -270,8 +416,21 @@
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            splitContainer2.Panel1.ResumeLayout(false);
+            splitContainer2.Panel2.ResumeLayout(false);
+            splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
+            splitContainer2.ResumeLayout(false);
+            splitContainer3.Panel1.ResumeLayout(false);
+            splitContainer3.Panel1.PerformLayout();
+            splitContainer3.Panel2.ResumeLayout(false);
+            splitContainer3.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
+            splitContainer3.ResumeLayout(false);
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
+            tab_compiler.ResumeLayout(false);
+            tab_compiler.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -292,7 +451,16 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_line;
-        private System.Windows.Forms.RichTextBox rtb_executionLog;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private Label label2;
+        private SplitContainer splitContainer2;
+        private RichTextBox rtb_code;
+        private RichTextBox rtb_executionLog;
+        private Label label3;
+        private Label label4;
+        private SplitContainer splitContainer3;
+        private RichTextBox rtb_assembledCode;
+        private Label label5;
+        private ToolStripButton btn_memoryAnalizer;
     }
 }
