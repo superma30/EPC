@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMemoryAnalizer));
             lsw_registers = new ListView();
             label1 = new Label();
             lsb_memory = new ListBox();
@@ -94,6 +95,7 @@
             Controls.Add(lsb_memory);
             Controls.Add(label1);
             Controls.Add(lsw_registers);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormMemoryAnalizer";
             Text = "Memory and Registers";
             TopMost = true;
