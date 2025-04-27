@@ -43,46 +43,42 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Utente\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\gvnnp\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\EPCVisual\\EPCVisual.csproj",
+      "projectUniqueName": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz's EPC\\Peruz-s_EPC\\CPUEmulator\\EPCVisual\\EPCVisual.csproj",
       "projectName": "EPCVisual",
-      "projectPath": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\EPCVisual\\EPCVisual.csproj",
-      "packagesPath": "C:\\Users\\Utente\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\EPCVisual\\obj\\",
+      "projectPath": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz's EPC\\Peruz-s_EPC\\CPUEmulator\\EPCVisual\\EPCVisual.csproj",
+      "packagesPath": "C:\\Users\\gvnnp\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz's EPC\\Peruz-s_EPC\\CPUEmulator\\EPCVisual\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Utente\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gvnnp\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0-windows"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0-windows7.0": {
           "targetAlias": "net9.0-windows",
           "projectReferences": {
-            "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj": {
-              "projectPath": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj"
+            "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz's EPC\\Peruz-s_EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj": {
+              "projectPath": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz's EPC\\Peruz-s_EPC\\CPUEmulator\\CPUEmulator\\CPUEmulator.csproj"
             },
-            "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\EPCCompiler\\EPCCompiler.csproj": {
-              "projectPath": "C:\\Users\\Utente\\Source\\Repos\\EPC\\CPUEmulator\\EPCCompiler\\EPCCompiler.csproj"
+            "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz's EPC\\Peruz-s_EPC\\CPUEmulator\\EPCCompiler\\EPCCompiler.csproj": {
+              "projectPath": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz's EPC\\Peruz-s_EPC\\CPUEmulator\\EPCCompiler\\EPCCompiler.csproj"
             }
           }
         }
@@ -97,7 +93,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net9.0-windows7.0": {
@@ -121,7 +117,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

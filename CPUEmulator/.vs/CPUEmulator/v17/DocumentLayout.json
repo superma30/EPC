@@ -1,18 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\",
+  "WorkspaceRootPath": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C241C91C-7F54-48C3-8CF9-5B6617E987E7}|EPCVisual\\EPCVisual.csproj|C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\epcvisual\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C241C91C-7F54-48C3-8CF9-5B6617E987E7}|EPCVisual\\EPCVisual.csproj|solutionrelative:epcvisual\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|c:\\users\\gvnnp\\desktop\\c#\\peruz\u0027s epc\\peruz-s_epc\\cpuemulator\\epccompiler\\compiler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|solutionrelative:epccompiler\\compiler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C241C91C-7F54-48C3-8CF9-5B6617E987E7}|EPCVisual\\EPCVisual.csproj|c:\\users\\utente\\source\\repos\\epc\\cpuemulator\\epcvisual\\formmemoryanalizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C241C91C-7F54-48C3-8CF9-5B6617E987E7}|EPCVisual\\EPCVisual.csproj|solutionrelative:epcvisual\\formmemoryanalizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{1F9D4563-463C-412E-9F7A-2D6F42D5E84B}|EPCCompilerTester\\EPCCompilerTester.csproj|c:\\users\\gvnnp\\desktop\\c#\\peruz\u0027s epc\\peruz-s_epc\\cpuemulator\\epccompilertester\\midlang.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{1F9D4563-463C-412E-9F7A-2D6F42D5E84B}|EPCCompilerTester\\EPCCompilerTester.csproj|solutionrelative:epccompilertester\\midlang.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C241C91C-7F54-48C3-8CF9-5B6617E987E7}|EPCVisual\\EPCVisual.csproj|c:\\users\\utente\\source\\repos\\epc\\cpuemulator\\epcvisual\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C241C91C-7F54-48C3-8CF9-5B6617E987E7}|EPCVisual\\EPCVisual.csproj|solutionrelative:epcvisual\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|c:\\users\\gvnnp\\desktop\\c#\\peruz\u0027s epc\\peruz-s_epc\\cpuemulator\\epccompiler\\ast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|solutionrelative:epccompiler\\ast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|c:\\users\\gvnnp\\desktop\\c#\\peruz\u0027s epc\\peruz-s_epc\\cpuemulator\\epccompiler\\parser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|solutionrelative:epccompiler\\parser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|c:\\users\\gvnnp\\desktop\\c#\\peruz\u0027s epc\\peruz-s_epc\\cpuemulator\\epccompiler\\lexer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|solutionrelative:epccompiler\\lexer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,49 +33,66 @@
           "SelectedChildIndex": 3,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FormMemoryAnalizer.cs [Progettazione]",
-              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\EPCVisual\\FormMemoryAnalizer.cs",
-              "RelativeDocumentMoniker": "EPCVisual\\FormMemoryAnalizer.cs",
-              "ToolTip": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\EPCVisual\\FormMemoryAnalizer.cs [Progettazione]",
-              "RelativeToolTip": "EPCVisual\\FormMemoryAnalizer.cs [Progettazione]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T09:24:11.411Z",
-              "EditorCaption": " [Progettazione]"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs [Progettazione]",
-              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\EPCVisual\\Form1.cs",
-              "RelativeDocumentMoniker": "EPCVisual\\Form1.cs",
-              "ToolTip": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\EPCVisual\\Form1.cs [Progettazione]",
-              "RelativeToolTip": "EPCVisual\\Form1.cs [Progettazione]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T16:44:41.184Z",
-              "EditorCaption": " [Progettazione]"
+              "Title": "midlang.txt",
+              "DocumentMoniker": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCCompilerTester\\midlang.txt",
+              "RelativeDocumentMoniker": "EPCCompilerTester\\midlang.txt",
+              "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCCompilerTester\\midlang.txt",
+              "RelativeToolTip": "EPCCompilerTester\\midlang.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-04-26T19:47:07.262Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\EPCVisual\\Form1.cs",
-              "RelativeDocumentMoniker": "EPCVisual\\Form1.cs",
-              "ToolTip": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\EPCVisual\\Form1.cs",
-              "RelativeToolTip": "EPCVisual\\Form1.cs",
-              "ViewState": "AgIAAHIAAAAAAAAAAAAjwIcAAAA4AAAAAAAAAA==",
+              "Title": "AST.cs",
+              "DocumentMoniker": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCCompiler\\AST.cs",
+              "RelativeDocumentMoniker": "EPCCompiler\\AST.cs",
+              "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCCompiler\\AST.cs",
+              "RelativeToolTip": "EPCCompiler\\AST.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAkwIEAAACpAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T16:44:47.385Z",
+              "WhenOpened": "2025-04-25T22:04:30.136Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Lexer.cs",
+              "DocumentMoniker": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCCompiler\\Lexer.cs",
+              "RelativeDocumentMoniker": "EPCCompiler\\Lexer.cs",
+              "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCCompiler\\Lexer.cs",
+              "RelativeToolTip": "EPCCompiler\\Lexer.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAADwvyYAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T15:04:13.101Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Compiler.cs",
+              "DocumentMoniker": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCCompiler\\Compiler.cs",
+              "RelativeDocumentMoniker": "EPCCompiler\\Compiler.cs",
+              "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCCompiler\\Compiler.cs",
+              "RelativeToolTip": "EPCCompiler\\Compiler.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAADgv14AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T22:05:01.913Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Parser.cs",
+              "DocumentMoniker": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCCompiler\\Parser.cs",
+              "RelativeDocumentMoniker": "EPCCompiler\\Parser.cs",
+              "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCCompiler\\Parser.cs",
+              "RelativeToolTip": "EPCCompiler\\Parser.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAADgv5UAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T22:02:02.839Z"
             }
           ]
         }

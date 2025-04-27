@@ -1,14 +1,2 @@
-var c
-var d
-R1 = 4
-R2 = 5
-R3 = R1 / 2
-d = R1
-R2 = c
-JL 400 5 x
-R3 = <<R1
-
-@x
-R3 = 5
-
-JMP END
+var a 5 4 3
+a\R1\R2\2 = 4

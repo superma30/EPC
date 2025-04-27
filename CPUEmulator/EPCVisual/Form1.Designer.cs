@@ -48,11 +48,11 @@
             toolStripSeparator1 = new ToolStripSeparator();
             btn_start = new ToolStripButton();
             btn_stop = new ToolStripButton();
-            btn_restart = new ToolStripButton();
             btn_next = new ToolStripButton();
             btn_nextAll = new ToolStripButton();
             btn_memoryAnalizer = new ToolStripButton();
             pgb_progess = new ToolStripProgressBar();
+            toolStripButton1 = new ToolStripButton();
             tab_compiler = new TabPage();
             label2 = new Label();
             openFileDialog1 = new OpenFileDialog();
@@ -197,12 +197,12 @@
             rtb_code.Location = new Point(0, 0);
             rtb_code.Margin = new Padding(4, 3, 4, 3);
             rtb_code.Name = "rtb_code";
-            rtb_code.ReadOnly = true;
             rtb_code.ShowSelectionMargin = true;
             rtb_code.Size = new Size(157, 454);
             rtb_code.TabIndex = 2;
             rtb_code.Text = "";
             rtb_code.WordWrap = false;
+            rtb_code.TextChanged += rtb_code_TextChanged;
             // 
             // label5
             // 
@@ -238,7 +238,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(382, 0);
             label4.Name = "label4";
-            label4.Size = new Size(82, 15);
+            label4.Size = new Size(81, 15);
             label4.TabIndex = 2;
             label4.Text = "Execution Log";
             // 
@@ -263,7 +263,7 @@
             // toolStrip1
             // 
             toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btn_changeSource, lbl_source, toolStripSeparator1, btn_start, btn_stop, btn_restart, btn_next, btn_nextAll, btn_memoryAnalizer, pgb_progess });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btn_changeSource, lbl_source, toolStripSeparator1, btn_start, btn_stop, btn_next, btn_nextAll, btn_memoryAnalizer, pgb_progess, toolStripButton1 });
             toolStrip1.Location = new Point(4, 3);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.RenderMode = ToolStripRenderMode.System;
@@ -304,7 +304,7 @@
             btn_start.Name = "btn_start";
             btn_start.Size = new Size(23, 23);
             btn_start.Text = "toolStripButton1";
-            btn_start.ToolTipText = "Start";
+            btn_start.ToolTipText = "Compile";
             btn_start.Click += btn_start_Click;
             // 
             // btn_stop
@@ -317,17 +317,6 @@
             btn_stop.Text = "toolStripButton1";
             btn_stop.ToolTipText = "Stop";
             btn_stop.Click += btn_stop_Click;
-            // 
-            // btn_restart
-            // 
-            btn_restart.BackgroundImage = Properties.Resources.restart_icon;
-            btn_restart.BackgroundImageLayout = ImageLayout.Stretch;
-            btn_restart.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btn_restart.ImageTransparentColor = Color.Magenta;
-            btn_restart.Name = "btn_restart";
-            btn_restart.Size = new Size(23, 23);
-            btn_restart.Text = "toolStripButton1";
-            btn_restart.ToolTipText = "Restart";
             // 
             // btn_next
             // 
@@ -374,6 +363,15 @@
             pgb_progess.Size = new Size(117, 23);
             pgb_progess.ToolTipText = "Code Execution Progress";
             // 
+            // toolStripButton1
+            // 
+            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
+            toolStripButton1.ImageTransparentColor = Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new Size(23, 23);
+            toolStripButton1.Text = "toolStripButton1";
+            // 
             // tab_compiler
             // 
             tab_compiler.Controls.Add(label2);
@@ -391,7 +389,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(3, 3);
             label2.Name = "label2";
-            label2.Size = new Size(343, 45);
+            label2.Size = new Size(344, 45);
             label2.TabIndex = 0;
             label2.Text = "Currently not supported!\r\n\r\nThe file gets automatically compiled and linked from the source";
             // 
@@ -446,7 +444,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btn_start;
         private System.Windows.Forms.ToolStripButton btn_stop;
-        private System.Windows.Forms.ToolStripButton btn_restart;
         private System.Windows.Forms.ToolStripButton btn_next;
         private System.Windows.Forms.ToolStripButton btn_nextAll;
         private System.Windows.Forms.ToolStripProgressBar pgb_progess;
@@ -464,5 +461,6 @@
         private RichTextBox rtb_assembledCode;
         private Label label5;
         private ToolStripButton btn_memoryAnalizer;
+        private ToolStripButton toolStripButton1;
     }
 }

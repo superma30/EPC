@@ -32,6 +32,8 @@ namespace EPCCompilerTester
                 IncludeFields = true
             });
 
+            Console.WriteLine(json);
+
             var compiler = new EPCCompiler.Compiler();
             compiler.Compile(ast, outputPath);
 

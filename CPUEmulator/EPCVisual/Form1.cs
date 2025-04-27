@@ -8,9 +8,9 @@ namespace EPCVisual
 {
     public partial class Form1 : Form
     {
-        public string CurrentSource = @"";
-        public string AssembledSource = "";
-        public string LinkedSource = "";
+        public string SourceCode = "";
+        public string AssembledCode = "";
+        public string BinCode = "";
         public int programLength = 0;
         public int CurrentInstruction = 0;
         public bool SourceInitialized = false;
@@ -50,50 +50,55 @@ namespace EPCVisual
             {
                 var filepath = openFileDialog1.FileName;
                 var code = File.ReadAllText(filepath);
-                MachineCodeAssembler es = new();
-                var lexer = new EPCCompiler.Lexer();
-                var parser = new EPCCompiler.Parser();
-                var compiler = new EPCCompiler.Compiler();
-                string lla;
-                try
-                {
-                    var tokens = lexer.Tokenize(code);
-                    var ast = parser.Parse(tokens);
-                    lla = compiler.Compile(ast);
-                }
-                catch
-                {
-                    MessageBox.Show("An unknown compilation error occurred, check the source code", "Compilation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (lla.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).Last() != "STP")
-                {
-                    MessageBox.Show("An unknown compilation error occurred", "Compilation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                CurrentSource = filepath;
-                AssembledSource = lla;
-                lbl_source.Text = filepath;
-                SourceInitialized = false;
                 rtb_code.Text = code;
-                rtb_assembledCode.Text = AssembledSource;
-
-                MachineCodeAssembler mcs = new();
-                LinkedSource = mcs.From_low_To_Bin_String(AssembledSource);
             }
         }
 
         private void btn_start_Click(object sender, EventArgs e)
         {
-            if (CurrentSource == "")
+            btn_start.BackColor = Color.FromArgb(0, 0, 0, 0);
+
+            SourceCode = rtb_code.Text;
+
+            CurrentEPC = new(8, 8);
+
+            MachineCodeAssembler es = new();
+            var lexer = new EPCCompiler.Lexer();
+            var parser = new EPCCompiler.Parser();
+            var compiler = new EPCCompiler.Compiler();
+            string lla;
+            try
+            {
+                var tokens = lexer.Tokenize(SourceCode);
+                var ast = parser.Parse(tokens);
+                lla = compiler.Compile(ast);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An unknown compilation error occurred, check the source code ({ex.Message})", "Compilation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (lla.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).Last() != "STP")
+            {
+                MessageBox.Show($"An unknown compilation error occurred (STP not at the end)", "Compilation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            AssembledCode = lla;
+            SourceInitialized = false;
+            rtb_assembledCode.Text = AssembledCode;
+
+            MachineCodeAssembler mcs = new();
+            BinCode = mcs.From_low_To_Bin_String(AssembledCode);
+
+            if (this.SourceCode == "")
             {
                 return;
             }
-            if (LinkedSource != "")
+            if (BinCode != "")
             {
                 CurrentEPC.RAM.SetAddress(0);
                 CurrentEPC.RAM.Clear();
-                CurrentEPC.RAM.LoadFromString(LinkedSource);
+                CurrentEPC.RAM.LoadFromString(BinCode);
             }
 
             CurrentEPC.ProgramCache.TransferDirectlyFullData(ref CurrentEPC.RAM.GetMemoryReference());
@@ -102,12 +107,12 @@ namespace EPCVisual
             SourceInitialized = true;
             pgb_progess.Maximum = 100;
             pgb_progess.Value = 0;
-            programLength = LinkedSource.Count(i => i == '\n');
+            programLength = BinCode.Count(i => i == '\n');
 
             rtb_executionLog.Text += "Program Loaded into cache\n";
             CurrentInstruction = 0;
             CurrentEPC.PC.SetCurrentLine(CurrentInstruction);
-            if(programLength != 0)
+            if (programLength != 0)
             {
                 pgb_progess.Value = (int)(((float)CurrentInstruction / (float)programLength) * 100);
             }
@@ -193,6 +198,11 @@ namespace EPCVisual
                 memoryAnalizer = new FormMemoryAnalizer(ref CurrentEPC.RAM, CurrentEPC.GetRegisters());
             }
             memoryAnalizer.Show();
+        }
+
+        private void rtb_code_TextChanged(object sender, EventArgs e)
+        {
+            btn_start.BackColor = Color.FromArgb(192, 192, 255);
         }
     }
 }
