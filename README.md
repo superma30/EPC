@@ -1,7 +1,8 @@
 # EPC
 Peruz's EPC
+<br>
 Added:
-- Immediate avr assignment:<br>
+- Immediate var assignment:<br>
   var a
   <br>
   a = 3
