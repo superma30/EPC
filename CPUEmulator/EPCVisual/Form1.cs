@@ -89,6 +89,8 @@ namespace EPCVisual
 
             MachineCodeAssembler mcs = new();
             BinCode = mcs.From_low_To_Bin_String(AssembledCode);
+            rtb_code_bin.Text = BinCode;
+            rtb_code_compiler.Text = SourceCode;
 
             if (this.SourceCode == "")
             {
@@ -203,6 +205,21 @@ namespace EPCVisual
         private void rtb_code_TextChanged(object sender, EventArgs e)
         {
             btn_start.BackColor = Color.FromArgb(192, 192, 255);
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            string msg = "";
+            foreach (var k in CurrentEPC.RAM._memory.Keys)
+            {
+                msg += $"{k}: {CurrentEPC.RAM._memory[k]}\n";
+            }
+            MessageBox.Show(msg);
+        }
+
+        private void tab_compiler_Enter(object sender, EventArgs e)
+        {
+            btn_start_Click(btn_start, new());
         }
     }
 }
