@@ -433,12 +433,19 @@ namespace CPUEmulator.Custom
                         return true;
 
                     case EPCInstructions.LDD:
-                        _EPC.RAM.SetAddress((uint)instruction.Item2);
+                        _EPC.RAM.SetAddress(
+                            //(uint)instruction.Item2 //WRONG, MR FERRARIN - WRT USES AR, NOT OPERAND
+                            (uint)(_EPC.AR).Get()
+                        );
                         _EPC.TR.Write(_EPC.RAM.Get());
                         return true;
 
                     case EPCInstructions.WRT:
-                        _EPC.RAM.SetAddress((uint)instruction.Item2);
+                        //throw new Exception($"{}");
+                        _EPC.RAM.SetAddress(
+                            //(uint)instruction.Item2 //WRONG, MR FERRARIN - WRT USES AR, NOT OPERAND
+                            (uint)(_EPC.AR).Get()
+                        );
                         _EPC.RAM.Write(_EPC.TR.Get());
                         return true;
 

@@ -48,13 +48,16 @@
             toolStripSeparator1 = new ToolStripSeparator();
             btn_start = new ToolStripButton();
             btn_stop = new ToolStripButton();
-            btn_restart = new ToolStripButton();
             btn_next = new ToolStripButton();
             btn_nextAll = new ToolStripButton();
             btn_memoryAnalizer = new ToolStripButton();
             pgb_progess = new ToolStripProgressBar();
+            toolStripButton1 = new ToolStripButton();
             tab_compiler = new TabPage();
-            label2 = new Label();
+            tlp_compile = new TableLayoutPanel();
+            rtb_code_compiler = new RichTextBox();
+            rtb_code_bin = new RichTextBox();
+            lbl_compiler_message = new Label();
             openFileDialog1 = new OpenFileDialog();
             tabControl1.SuspendLayout();
             tab_emulator.SuspendLayout();
@@ -72,6 +75,7 @@
             splitContainer3.SuspendLayout();
             toolStrip1.SuspendLayout();
             tab_compiler.SuspendLayout();
+            tlp_compile.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -197,12 +201,12 @@
             rtb_code.Location = new Point(0, 0);
             rtb_code.Margin = new Padding(4, 3, 4, 3);
             rtb_code.Name = "rtb_code";
-            rtb_code.ReadOnly = true;
             rtb_code.ShowSelectionMargin = true;
             rtb_code.Size = new Size(157, 454);
             rtb_code.TabIndex = 2;
             rtb_code.Text = "";
             rtb_code.WordWrap = false;
+            rtb_code.TextChanged += rtb_code_TextChanged;
             // 
             // label5
             // 
@@ -238,7 +242,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(382, 0);
             label4.Name = "label4";
-            label4.Size = new Size(82, 15);
+            label4.Size = new Size(81, 15);
             label4.TabIndex = 2;
             label4.Text = "Execution Log";
             // 
@@ -263,7 +267,7 @@
             // toolStrip1
             // 
             toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btn_changeSource, lbl_source, toolStripSeparator1, btn_start, btn_stop, btn_restart, btn_next, btn_nextAll, btn_memoryAnalizer, pgb_progess });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btn_changeSource, lbl_source, toolStripSeparator1, btn_start, btn_stop, btn_next, btn_nextAll, btn_memoryAnalizer, pgb_progess, toolStripButton1 });
             toolStrip1.Location = new Point(4, 3);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.RenderMode = ToolStripRenderMode.System;
@@ -304,7 +308,7 @@
             btn_start.Name = "btn_start";
             btn_start.Size = new Size(23, 23);
             btn_start.Text = "toolStripButton1";
-            btn_start.ToolTipText = "Start";
+            btn_start.ToolTipText = "Compile";
             btn_start.Click += btn_start_Click;
             // 
             // btn_stop
@@ -317,17 +321,6 @@
             btn_stop.Text = "toolStripButton1";
             btn_stop.ToolTipText = "Stop";
             btn_stop.Click += btn_stop_Click;
-            // 
-            // btn_restart
-            // 
-            btn_restart.BackgroundImage = Properties.Resources.restart_icon;
-            btn_restart.BackgroundImageLayout = ImageLayout.Stretch;
-            btn_restart.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btn_restart.ImageTransparentColor = Color.Magenta;
-            btn_restart.Name = "btn_restart";
-            btn_restart.Size = new Size(23, 23);
-            btn_restart.Text = "toolStripButton1";
-            btn_restart.ToolTipText = "Restart";
             // 
             // btn_next
             // 
@@ -374,9 +367,21 @@
             pgb_progess.Size = new Size(117, 23);
             pgb_progess.ToolTipText = "Code Execution Progress";
             // 
+            // toolStripButton1
+            // 
+            toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
+            toolStripButton1.ImageTransparentColor = Color.Magenta;
+            toolStripButton1.Name = "toolStripButton1";
+            toolStripButton1.Size = new Size(23, 23);
+            toolStripButton1.Text = "toolStripButton1";
+            toolStripButton1.Visible = false;
+            toolStripButton1.Click += toolStripButton1_Click;
+            // 
             // tab_compiler
             // 
-            tab_compiler.Controls.Add(label2);
+            tab_compiler.Controls.Add(tlp_compile);
+            tab_compiler.Controls.Add(lbl_compiler_message);
             tab_compiler.Location = new Point(4, 24);
             tab_compiler.Margin = new Padding(4, 3, 4, 3);
             tab_compiler.Name = "tab_compiler";
@@ -385,15 +390,65 @@
             tab_compiler.TabIndex = 1;
             tab_compiler.Text = "Compiler";
             tab_compiler.UseVisualStyleBackColor = true;
+            tab_compiler.Enter += tab_compiler_Enter;
             // 
-            // label2
+            // tlp_compile
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(3, 3);
-            label2.Name = "label2";
-            label2.Size = new Size(343, 45);
-            label2.TabIndex = 0;
-            label2.Text = "Currently not supported!\r\n\r\nThe file gets automatically compiled and linked from the source";
+            tlp_compile.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tlp_compile.ColumnCount = 2;
+            tlp_compile.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlp_compile.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlp_compile.Controls.Add(rtb_code_compiler, 0, 0);
+            tlp_compile.Controls.Add(rtb_code_bin, 1, 0);
+            tlp_compile.Location = new Point(0, 30);
+            tlp_compile.Name = "tlp_compile";
+            tlp_compile.RowCount = 1;
+            tlp_compile.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tlp_compile.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tlp_compile.Size = new Size(973, 500);
+            tlp_compile.TabIndex = 4;
+            // 
+            // rtb_code_compiler
+            // 
+            rtb_code_compiler.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            rtb_code_compiler.BackColor = Color.Black;
+            rtb_code_compiler.BorderStyle = BorderStyle.None;
+            rtb_code_compiler.Cursor = Cursors.IBeam;
+            rtb_code_compiler.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rtb_code_compiler.ForeColor = Color.White;
+            rtb_code_compiler.Location = new Point(4, 3);
+            rtb_code_compiler.Margin = new Padding(4, 3, 4, 3);
+            rtb_code_compiler.Name = "rtb_code_compiler";
+            rtb_code_compiler.ShowSelectionMargin = true;
+            rtb_code_compiler.Size = new Size(478, 494);
+            rtb_code_compiler.TabIndex = 4;
+            rtb_code_compiler.Text = "";
+            rtb_code_compiler.WordWrap = false;
+            // 
+            // rtb_code_bin
+            // 
+            rtb_code_bin.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            rtb_code_bin.BackColor = Color.Black;
+            rtb_code_bin.BorderStyle = BorderStyle.None;
+            rtb_code_bin.Cursor = Cursors.IBeam;
+            rtb_code_bin.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rtb_code_bin.ForeColor = Color.White;
+            rtb_code_bin.Location = new Point(490, 3);
+            rtb_code_bin.Margin = new Padding(4, 3, 4, 3);
+            rtb_code_bin.Name = "rtb_code_bin";
+            rtb_code_bin.ShowSelectionMargin = true;
+            rtb_code_bin.Size = new Size(479, 494);
+            rtb_code_bin.TabIndex = 3;
+            rtb_code_bin.Text = "";
+            rtb_code_bin.WordWrap = false;
+            // 
+            // lbl_compiler_message
+            // 
+            lbl_compiler_message.Location = new Point(3, 3);
+            lbl_compiler_message.Name = "lbl_compiler_message";
+            lbl_compiler_message.Size = new Size(970, 24);
+            lbl_compiler_message.TabIndex = 0;
+            lbl_compiler_message.Text = "The compiler has now been integrated into the previous window, so this one is pretty useless";
             // 
             // openFileDialog1
             // 
@@ -432,7 +487,7 @@
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             tab_compiler.ResumeLayout(false);
-            tab_compiler.PerformLayout();
+            tlp_compile.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -446,7 +501,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btn_start;
         private System.Windows.Forms.ToolStripButton btn_stop;
-        private System.Windows.Forms.ToolStripButton btn_restart;
         private System.Windows.Forms.ToolStripButton btn_next;
         private System.Windows.Forms.ToolStripButton btn_nextAll;
         private System.Windows.Forms.ToolStripProgressBar pgb_progess;
@@ -454,7 +508,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_line;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private Label label2;
+        private Label lbl_compiler_message;
         private SplitContainer splitContainer2;
         private RichTextBox rtb_code;
         private RichTextBox rtb_executionLog;
@@ -464,5 +518,9 @@
         private RichTextBox rtb_assembledCode;
         private Label label5;
         private ToolStripButton btn_memoryAnalizer;
+        private ToolStripButton toolStripButton1;
+        private TableLayoutPanel tlp_compile;
+        private RichTextBox rtb_code_compiler;
+        private RichTextBox rtb_code_bin;
     }
 }

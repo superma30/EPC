@@ -13,7 +13,7 @@ namespace CPUEmulator.External
         // Phisical Methods
         private ushort _bits;
         private uint _capacity;
-        private DictionaryWithDefault<uint, int> _memory = new DictionaryWithDefault<uint, int>(0);
+        public DictionaryWithDefault<uint, int> _memory = new DictionaryWithDefault<uint, int>(0);
         private uint _idx = 0;
         public RAM(uint capacity, ushort bits = 0)
         {
@@ -33,10 +33,12 @@ namespace CPUEmulator.External
         }
         public void Write(int newData)
         {
+            //throw new Exception();
             _memory[_idx] = newData;
         }
         public int Get()
         {
+            //throw new Exception();
             return _memory[_idx];
         }
 

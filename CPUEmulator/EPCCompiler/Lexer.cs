@@ -25,7 +25,7 @@ namespace EPCCompiler
             (?<Comment>\#.*) |
             (?<Call>@) |
             (?<Number>\d+) |
-            (?<Ident>[A-Za-z_][A-Za-z0-9_]*) |
+            (?<Ident>[A-Za-z_](?:[A-Za-z0-9_\\]*[A-Za-z0-9_])?) |
             (?<Equals>=) |
             (?<Comma>,) |
             (?<LBracket>\[) |

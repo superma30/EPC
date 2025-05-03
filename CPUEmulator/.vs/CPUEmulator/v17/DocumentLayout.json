@@ -1,18 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\",
+  "WorkspaceRootPath": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C241C91C-7F54-48C3-8CF9-5B6617E987E7}|EPCVisual\\EPCVisual.csproj|C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\epcvisual\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C241C91C-7F54-48C3-8CF9-5B6617E987E7}|EPCVisual\\EPCVisual.csproj|c:\\users\\gvnnp\\desktop\\c#\\peruz\u0027s epc\\peruz-s_epc\\cpuemulator\\epcvisual\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C241C91C-7F54-48C3-8CF9-5B6617E987E7}|EPCVisual\\EPCVisual.csproj|solutionrelative:epcvisual\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C241C91C-7F54-48C3-8CF9-5B6617E987E7}|EPCVisual\\EPCVisual.csproj|c:\\users\\utente\\source\\repos\\epc\\cpuemulator\\epcvisual\\formmemoryanalizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C241C91C-7F54-48C3-8CF9-5B6617E987E7}|EPCVisual\\EPCVisual.csproj|solutionrelative:epcvisual\\formmemoryanalizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{C241C91C-7F54-48C3-8CF9-5B6617E987E7}|EPCVisual\\EPCVisual.csproj|c:\\users\\gvnnp\\desktop\\c#\\peruz\u0027s epc\\peruz-s_epc\\cpuemulator\\epcvisual\\formmemoryanalizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C241C91C-7F54-48C3-8CF9-5B6617E987E7}|EPCVisual\\EPCVisual.csproj|solutionrelative:epcvisual\\formmemoryanalizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C241C91C-7F54-48C3-8CF9-5B6617E987E7}|EPCVisual\\EPCVisual.csproj|c:\\users\\utente\\source\\repos\\epc\\cpuemulator\\epcvisual\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C241C91C-7F54-48C3-8CF9-5B6617E987E7}|EPCVisual\\EPCVisual.csproj|c:\\users\\gvnnp\\desktop\\c#\\peruz\u0027s epc\\peruz-s_epc\\cpuemulator\\epcvisual\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C241C91C-7F54-48C3-8CF9-5B6617E987E7}|EPCVisual\\EPCVisual.csproj|solutionrelative:epcvisual\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EADC30-1C1E-4931-BAF5-9365B4E49C67}|CPUEmulator\\CPUEmulator.csproj|c:\\users\\gvnnp\\desktop\\c#\\peruz\u0027s epc\\peruz-s_epc\\cpuemulator\\cpuemulator\\custom\\epc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9EADC30-1C1E-4931-BAF5-9365B4E49C67}|CPUEmulator\\CPUEmulator.csproj|solutionrelative:cpuemulator\\custom\\epc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|c:\\users\\gvnnp\\desktop\\c#\\peruz\u0027s epc\\peruz-s_epc\\cpuemulator\\epccompiler\\compiler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32FF971B-1F0A-4D99-A20D-EB469ACEE252}|EPCCompiler\\EPCCompiler.csproj|solutionrelative:epccompiler\\compiler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9EADC30-1C1E-4931-BAF5-9365B4E49C67}|CPUEmulator\\CPUEmulator.csproj|c:\\users\\gvnnp\\desktop\\c#\\peruz\u0027s epc\\peruz-s_epc\\cpuemulator\\cpuemulator\\external\\ram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9EADC30-1C1E-4931-BAF5-9365B4E49C67}|CPUEmulator\\CPUEmulator.csproj|solutionrelative:cpuemulator\\external\\ram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,51 +34,83 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCVisual\\Form1.cs",
+              "RelativeDocumentMoniker": "EPCVisual\\Form1.cs",
+              "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCVisual\\Form1.cs",
+              "RelativeToolTip": "EPCVisual\\Form1.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAqwFwAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T07:33:13.047Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FormMemoryAnalizer.cs [Progettazione]",
-              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\EPCVisual\\FormMemoryAnalizer.cs",
+              "Title": "FormMemoryAnalizer.cs",
+              "DocumentMoniker": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCVisual\\FormMemoryAnalizer.cs",
               "RelativeDocumentMoniker": "EPCVisual\\FormMemoryAnalizer.cs",
-              "ToolTip": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\EPCVisual\\FormMemoryAnalizer.cs [Progettazione]",
-              "RelativeToolTip": "EPCVisual\\FormMemoryAnalizer.cs [Progettazione]",
+              "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCVisual\\FormMemoryAnalizer.cs",
+              "RelativeToolTip": "EPCVisual\\FormMemoryAnalizer.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAnwCcAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T09:24:11.411Z",
-              "EditorCaption": " [Progettazione]"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "WhenOpened": "2025-05-02T07:31:55.456Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Form1.cs [Progettazione]",
-              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\EPCVisual\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCVisual\\Form1.cs",
               "RelativeDocumentMoniker": "EPCVisual\\Form1.cs",
-              "ToolTip": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\EPCVisual\\Form1.cs [Progettazione]",
+              "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCVisual\\Form1.cs [Progettazione]",
               "RelativeToolTip": "EPCVisual\\Form1.cs [Progettazione]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T16:44:41.184Z",
+              "WhenOpened": "2025-05-02T07:31:48.473Z",
               "EditorCaption": " [Progettazione]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\EPCVisual\\Form1.cs",
-              "RelativeDocumentMoniker": "EPCVisual\\Form1.cs",
-              "ToolTip": "C:\\Users\\Utente\\source\\repos\\EPC\\CPUEmulator\\EPCVisual\\Form1.cs",
-              "RelativeToolTip": "EPCVisual\\Form1.cs",
-              "ViewState": "AgIAAHIAAAAAAAAAAAAjwIcAAAA4AAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "EPC.cs",
+              "DocumentMoniker": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\CPUEmulator\\Custom\\EPC.cs",
+              "RelativeDocumentMoniker": "CPUEmulator\\Custom\\EPC.cs",
+              "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\CPUEmulator\\Custom\\EPC.cs",
+              "RelativeToolTip": "CPUEmulator\\Custom\\EPC.cs",
+              "ViewState": "AgIAAKoBAAAAAAAAAAAmwMABAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-22T16:44:47.385Z",
+              "WhenOpened": "2025-04-30T19:52:32.139Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Compiler.cs",
+              "DocumentMoniker": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCCompiler\\Compiler.cs",
+              "RelativeDocumentMoniker": "EPCCompiler\\Compiler.cs",
+              "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\EPCCompiler\\Compiler.cs",
+              "RelativeToolTip": "EPCCompiler\\Compiler.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAADgv14AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T22:05:01.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RAM.cs",
+              "DocumentMoniker": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\CPUEmulator\\External\\RAM.cs",
+              "RelativeDocumentMoniker": "CPUEmulator\\External\\RAM.cs",
+              "ToolTip": "C:\\Users\\gvnnp\\Desktop\\C#\\Peruz\u0027s EPC\\Peruz-s_EPC\\CPUEmulator\\CPUEmulator\\External\\RAM.cs",
+              "RelativeToolTip": "CPUEmulator\\External\\RAM.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwCgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T07:30:03.302Z",
               "EditorCaption": ""
             }
           ]

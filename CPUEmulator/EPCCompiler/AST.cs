@@ -47,6 +47,7 @@ namespace EPCCompiler
     public class VarDeclaration : AstNode
     {
         public VariableName Name;
+        public List<int> Size;
 
         public override void Print(string indent = "")
         {
@@ -91,12 +92,14 @@ namespace EPCCompiler
     public class RegisterMemoryAssignment : RegisterAssignment
     {
         public VariableName Var;
+        public List<PrimaryMemoryUnit> Index;
 
         public override void Print(string indent = "")
         {
             Console.WriteLine(indent + "RegisterAssignment");
             Console.WriteLine(indent + "  RegisterDestination: " + RegisterDestination);
             Console.WriteLine(indent + "  Var: " + Var);
+            Console.WriteLine(indent + "  Index: " + (Index.Count > 0 ? (Index[0] is Constant ? ((Constant)(Index[0])).value : ((Register)(Index[0])).NumberReg) : "x"));
         }
     }
 
@@ -115,16 +118,19 @@ namespace EPCCompiler
     public class AssignmentStatement : AstNode
     {
         public VariableName Destination;
-        public Register RegisterInput;
+        public PrimaryMemoryUnit Input;
+        public List<PrimaryMemoryUnit> Index;
 
         public override void Print(string indent = "")
         {
             Console.WriteLine(indent + "AssignmentStatement");
             Console.WriteLine(indent + "  Destination:");
             Destination?.Print();
-            Console.WriteLine(indent + "  Register:" + RegisterInput);
+            Console.WriteLine(indent + "  Register:" + Input);
+            Console.WriteLine(indent + "  Index: " + (Index.Count > 0 ? (Index[0] is Constant ? ((Constant)(Index[0])).value : ((Register)(Index[0])).NumberReg) : "x"));
         }
     }
+
 
     public abstract class MemoryUnit : AstNode
     {
