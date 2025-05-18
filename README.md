@@ -1,5 +1,8 @@
 # EPC
-Peruz's EPC
+The **EPC** (**E**asily **P**rogrammable **C**hip) is a CPU model made by Peruzzi Giovanni, Borsan Cristian, Ferrarin Mattia and Pretto Giovanni.
+It's a RISC CPU with single operand instructions.
+With the Emulator comes the Compiler and Assembler for the specific Higher-level assembly.
+
 <br>
 Added:
 - Immediate var assignment:<br>
