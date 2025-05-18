@@ -4,6 +4,19 @@ It's a RISC CPU with single operand instructions.
 With the Emulator comes the Compiler and Assembler for the specific Higher-level assembly.
 
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+### Development notes
+<br>
 Added:
 - Immediate var assignment:<br>
   var a
